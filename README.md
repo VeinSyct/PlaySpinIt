@@ -1,130 +1,87 @@
-# PlaySpinIt Offline eCash
-## From Arcade Gaming to Digital Casino Cash
+# PlaySpinIt
+## Offline Arcade Game Using eCash Instead of Chips
 
 ![Offline](https://img.shields.io/badge/offline-native-blue)
-![Casino Ready](https://img.shields.io/badge/casino-ready-green)
+![Arcade](https://img.shields.io/badge/type-arcade-green)
 ![License](https://img.shields.io/badge/license-open--source-lightgrey)
 
-**PlaySpinIt** began as an arcade gaming system installed in several hotels in Palm Jumeirah and Jumeirah Beach Residence between 2017 and 2022.
+**PlaySpinIt** is an offline arcade game that uses **eCash as a replacement for physical chips or tokens**.
 
-The arcade machines allowed players to interact with a digital game environment where value could be accumulated and displayed. Over time the system demonstrated that physical tokens and chips could be replaced by **digital stored value held directly by the player**.
+The arcade machines were installed in several hotels in **Palm Jumeirah** and **Jumeirah Beach Residence** between **2017 and 2022**.
 
-This concept evolved into **PlaySpinIt Offline eCash**, a system where digital cash replaces traditional casino chips while remaining portable, visible, and instantly transferable.
-
-Instead of carrying trays of chips, players can hold value digitally and display their balance through neon displays or device screens, turning wealth into a visible part of the gaming experience.
+The system was designed to operate completely **offline**, with no servers, no internet connectivity, and no external infrastructure. All value inside the game is stored locally using eCash structures.
 
 ---
 
-# Origins
+# Overview
 
-Between 2017 and 2022 PlaySpinIt arcade machines operated in hotel environments located in:
+PlaySpinIt is a self contained arcade gaming machine where players interact directly with the system to play and accumulate value.
+
+Instead of traditional arcade tokens, coins, or casino chips, the system uses **digital eCash units**. These units function as the internal value used by the game.
+
+This removes the need for physical chips while keeping the familiar concept of stored gaming value.
+
+---
+
+# eCash Replacing Chips
+
+In traditional gaming environments players use chips or tokens to represent value.
+
+PlaySpinIt replaces these with **digital eCash**.
+
+The eCash units act as the equivalent of chips inside the arcade system.
+
+They can be:
+
+- accumulated during gameplay  
+- stored locally by the machine  
+- transferred between game sessions  
+- displayed as the player's current balance  
+
+The player interacts with value digitally rather than carrying physical tokens.
+
+---
+
+# Offline Operation
+
+PlaySpinIt machines operate entirely offline.
+
+The system does not require:
+
+- internet connectivity  
+- remote servers  
+- cloud infrastructure  
+- online accounts  
+
+All gameplay logic and value storage exist locally inside the arcade machine.
+
+This allows the machines to run reliably in environments where network connectivity is unavailable or unnecessary.
+
+---
+
+# Installation Locations
+
+PlaySpinIt arcade machines were installed in hotel environments located in:
 
 - Palm Jumeirah  
 - Jumeirah Beach Residence  
 
-These installations introduced a digital system where players could accumulate and manage value within the gaming environment.
-
-The project demonstrated that gaming value could exist entirely in digital form without relying on physical tokens.
-
-This led to the development of the PlaySpinIt Offline eCash concept.
+The machines operated between **2017 and 2022**.
 
 ---
 
-# Replacing Casino Chips
+# Value System
 
-Traditional casinos use physical chips that players carry between tables.
+The eCash used by PlaySpinIt functions as the internal value layer of the arcade system.
 
-High value players often move trays of chips across the casino floor as a symbol of wealth and status.
+Key properties:
 
-PlaySpinIt replaces this with **digital eCash stored in player wallets**.
+- replaces physical chips or tokens  
+- stored locally within the system  
+- transferable within the game environment  
+- independent of external infrastructure  
 
-Players can transfer value instantly to:
-
-- gaming machines  
-- tables  
-- cashier systems  
-- other players  
-
-This removes the need for chip logistics and physical transport of value.
-
----
-
-# Visible Player Status
-
-Casino environments traditionally display wealth through stacks of chips.
-
-PlaySpinIt preserves this culture by allowing players to display their holdings using digital indicators such as:
-
-- neon wallet displays  
-- mobile device screens  
-- wearable displays  
-- casino terminal indicators  
-
-Wealth becomes a **digital visual signal** across the gaming floor.
-
----
-
-# Offline Digital Cash
-
-PlaySpinIt eCash is designed to operate **fully offline**.
-
-Transactions occur directly between devices through QR exchange or optical transfer.
-
-No internet connection or external servers are required for normal transactions.
-
-This allows gaming environments to continue operating without dependence on network infrastructure.
-
----
-
-# Independent Value Storage
-
-PlaySpinIt also functions as a **portable digital value storage system**.
-
-Key properties include:
-
-- value stored directly by the owner  
-- no centralized server dependency  
-- no blockchain network  
-- no institutional control over stored value  
-
-Owners hold the value directly within their devices.
-
----
-
-# eCash Structure
-
-Value is represented by structured digital eCash units.
-
-These units can be:
-
-- split into smaller values  
-- merged into larger values  
-- transferred between wallets  
-
-Ownership transfer occurs deterministically so the sender no longer retains the value once the transfer is completed.
-
----
-
-# Security Model
-
-The system prevents duplication through deterministic value structures.
-
-Security principles include:
-
-- each eCash unit has a unique structure  
-- transfers invalidate the sender instance  
-- duplicated units cannot be validated  
-- inactive structures collapse into entropy states within storage  
-
-Security is intrinsic to the algorithm rather than dependent on external verification systems.
-
----
-
-# Future Vision
-
-PlaySpinIt explores a new model where gaming value and financial value merge into a **portable offline digital cash system**.
-
-The project demonstrates how digital value can replace physical tokens while preserving the culture and visibility of wealth found in traditional gaming environments.
+This allows the arcade machines to maintain a simple and reliable value system while remaining fully offline.
 
 ---
 
@@ -132,4 +89,4 @@ The project demonstrates how digital value can replace physical tokens while pre
 
 MIT License
 
-Free to use, modify, and integrate into gaming systems or digital cash environments.
+Free to use, modify, and integrate into arcade or offline digital value systems.
