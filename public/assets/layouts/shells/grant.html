@@ -1,0 +1,710 @@
+<meta name="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, user-scalable = 0, viewport-fit = cover, shrink-to-fit = no">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/metallicgold.css" />
+<style>
+    :root {
+    	--garageWhite: rgba(235, 237, 236, 1);
+    }
+    *, *:before, *:after {
+    	-webkit-box-sizing: border-box;
+    	-moz-box-sizing: border-box;
+    	box-sizing: border-box;
+    }
+    [type=submit], [type=reset], button, html [type=button] {
+    	-webkit-appearance: button;
+    	text-transform: none;
+    }
+    body {
+    	position: relative;
+    	height: 100vh;
+    	width: 100vw;
+    	display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+    	transition: all 200ms ease;
+    	overflow-x: hidden;
+    }
+    .lightTheme {
+    	background: rgba(235, 236, 240, 1);
+    }
+    .radial-ring-container {
+    	--borderRadius: .856em;
+    	--borderRadiusBefore: .867em;
+    	--offset: 0%;
+    	--blurAmount: 12px;
+    	--saturateAmount: 120%;
+    	--contrastAmount: 1.05;
+    	--brightnessAmount: 1.1;
+    	--backgroundSize: 250% 100%;
+    	--backgroundPosition: 50% 50%;
+    	--backangle: 127deg;
+    	--doubleHeight: var(--bheight);
+    	--doubleWidth: var(--bwidth);
+    	--color01: #1598fc;
+    	--color02: #18ecfd;
+    	--color03: #26f0ba;
+    	--color04: #e6d05a;
+    	--color05: #fb9f56;
+    	--color06: #fa6984;
+    	--color07: #838ce1;
+    	--color08: #1598fc;
+    	--color09: #fadd81;
+    	--color10: #8cfa97;
+    	--color11: #06d4d1;
+    	--color12: #16b0b0;
+    	position: relative;
+    	content: "";
+    	width: 100%;
+    	max-width: 175px;
+    	height: 100%;
+    	max-height: 55px;
+    	transition: background 150ms ease;
+    	border-radius: var(--borderRadius);
+    	transition: all 200ms linear;
+    }
+    .lightTheme .radial-ring-container {
+    	border-top: 1px solid rgba(255, 255, 255, .6);
+    	border-left: 1px solid rgba(255, 255, 255, .6);
+    	border-right: 1px solid rgba(255, 255, 255, .6);
+    	border-bottom: 2px solid rgba(255, 255, 255, .6);
+    }
+    .radial-ring-container:hover {
+    	cursor: pointer;
+    	transform: scale(1.03);
+    }
+    .radial-ring-container:active {
+    	transform: scale(.98);
+    }
+    .radial-ring-container:before {
+    	content: "";
+    	width: 95%;
+    	height: 70%;
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    	border-radius: 50%;
+    	background:
+    	repeating-radial-gradient(
+    		circle at left top,
+    		var(--color01) calc(var(--offset) + 12.500% * 01),
+    		var(--color02) calc(var(--offset) + 12.500% * 02),
+    		var(--color03) calc(var(--offset) + 12.500% * 03),
+    		var(--color04) calc(var(--offset) + 12.500% * 04),
+    		var(--color05) calc(var(--offset) + 12.500% * 05),
+    		var(--color06) calc(var(--offset) + 12.500% * 06),
+    		var(--color07) calc(var(--offset) + 12.500% * 07),
+    		var(--color08) calc(var(--offset) + 12.500% * 08),
+    		var(--color09) calc(var(--offset) + 12.500% * 09),
+    		var(--color10) calc(var(--offset) + 12.500% * 10),
+    		var(--color11) calc(var(--offset) + 12.500% * 11),
+    		var(--color12) calc(var(--offset) + 12.500% * 12)    		
+    	);
+    	background-size: var(--backgroundSize);
+    	background-position: var(--backgroundPosition);
+    	-webkit-filter: brightness(var(--brightnessAmount)) contrast(var(--contrastAmount)) saturate(var(--saturateAmount)) blur(30px);
+    	filter: brightness(var(--brightnessAmount)) contrast(var(--contrastAmount)) saturate(var(--saturateAmount)) blur(30px);
+    	z-index: -1;
+    	mix-blend-mode: hard-light;
+    }
+    .lightTheme .radial-ring-container::before {
+    	mix-blend-mode: multiply;
+    }
+    .radial-ring-container:after {
+    	content: "";
+    	position: absolute;
+    	width: 100%;
+    	height: 100%;
+    	top: 50%;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    	border-radius: var(--borderRadiusBefore);
+    }
+    .radial-ring-wrapper {
+    	position: absolute;
+    	content: "";
+    	width: 100%;
+    	max-width: 175px;
+    	height: 100%;
+    	max-height: 55px;
+    	transition: background 150ms ease;
+    	border-radius: var(--borderRadius);
+    	overflow: hidden;
+    	border-top: 1px solid rgba(0, 0, 0, .6);
+    	border-left: 1px solid rgba(0, 0, 0, .6);
+    	border-right: 1px solid rgba(0, 0, 0, .6);
+    	border-bottom: 2px solid rgba(0, 0, 0, .6);
+    	box-shadow:
+			0 1px 1px hsl(0deg 0% 0% / 0.075),
+			0 2px 2px hsl(0deg 0% 0% / 0.075),
+			0 4px 4px hsl(0deg 0% 0% / 0.075),
+			0 6px 6px hsl(0deg 0% 0% / 0.075);
+    }
+    .radial-ring-color {
+    	content: "";
+    	width: 150%;
+    	height: 150%;
+    	position: absolute;
+    	top: 50%;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    	background:
+			repeating-radial-gradient(
+				circle at left top,
+				var(--color01) calc(var(--offset) + 12.500% * 01),
+				var(--color02) calc(var(--offset) + 12.500% * 02),
+				var(--color03) calc(var(--offset) + 12.500% * 03),
+				var(--color04) calc(var(--offset) + 12.500% * 04),
+				var(--color05) calc(var(--offset) + 12.500% * 05),
+				var(--color06) calc(var(--offset) + 12.500% * 06),
+				var(--color07) calc(var(--offset) + 12.500% * 07),
+				var(--color08) calc(var(--offset) + 12.500% * 08),
+				var(--color09) calc(var(--offset) + 12.500% * 09),
+				var(--color10) calc(var(--offset) + 12.500% * 10),
+				var(--color11) calc(var(--offset) + 12.500% * 11),
+				var(--color12) calc(var(--offset) + 12.500% * 12)
+			);
+    	background-size: var(--backgroundSize);
+    	background-position: var(--backgroundPosition);
+    	-webkit-filter: brightness(var(--brightnessAmount)) contrast(var(--contrastAmount)) saturate(var(--saturateAmount)) blur(var(--blurAmount));
+    	filter: brightness(var(--brightnessAmount)) contrast(var(--contrastAmount)) saturate(var(--saturateAmount)) blur(var(--blurAmount));
+    }
+    .radial-ring-color:before,
+    .radial-ring-color:after {
+    	content: "";
+    	position: absolute;
+    	width: 100%;
+    	height: 100%;
+    	top: 50%;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    }
+    .radial-ring-color:before {
+    	height: var(--doubleHeight);
+    	background:
+    	repeating-linear-gradient(
+    		var(--backangle),
+    		transparent,
+    		transparent,
+    		rgba(0, 0, 0, .6),
+    		transparent,
+    		transparent,
+    		transparent,
+    		rgba(0, 0, 0, .2),
+    		transparent var(--doubleHeight)
+    	),
+    	repeating-linear-gradient(
+    		var(--backangle),
+    		transparent,
+    		transparent,
+    		rgba(255, 255, 255, .55),
+    		transparent,
+    		transparent,
+    		rgba(255, 255, 255, .35),
+    		transparent,
+    		transparent var(--doubleHeight)
+    	);
+    	background-blend-mode: color-burn, overlay;
+    	mix-blend-mode: color-dodge;
+    	background-repeat: repeat;
+    	background-size: calc( var(--doubleHeight) / sin(var(--backangle)) ) 100%;
+    	animation: moveAccentLights 10s linear infinite;
+    }
+    @keyframes moveAccentLights {
+    	100% {
+    		background-position: calc( var(--doubleHeight) / sin(var(--backangle)) ) 0%;
+    	}
+    }
+    .radial-ring-button {
+    	content: "";
+    	position: absolute;
+    	width: 100%;
+    	height: 100%;
+    	top: 50%;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    	color: hsla(0deg, 0%, 0.78%, .75);
+    	display: flex;
+    	-webkit-box-pack: center;
+    	justify-content: center;
+    	-webkit-box-align: center;
+    	align-items: center;
+    	backface-visibility: hidden;
+    	text-shadow: 0px 1px 1px rgba(0, 0, 0, .15);
+    	text-rendering: geometricprecision;
+    	font-size: 1.1625em;
+    	font-weight: 600;
+    	text-transform: uppercase;
+    }
+    .radial-ring-button:after {
+    	content: "";
+    	position: absolute;
+    	width: 94%;
+    	height: 45%;
+    	top: 6%;
+    	left: 50%;
+    	transform: translate(-50%, -3%);
+    	border-radius: .65em .65em 0em 0em;
+    	background:
+    	linear-gradient(
+    		rgba(255, 255, 255, 0.65),
+    		rgba(255, 255, 255, 0)
+    	);
+    	z-index: 1;
+    	mix-blend-mode: screen;
+    }
+    .radial-ring-button:before {
+    	content: "";
+    	position: absolute;
+    	width: 98%;
+    	height: 45%;
+    	bottom: 3%;
+    	left: 50%;
+    	transform: translate(-50%, 0%);
+    	border-radius: 0em 0em .65em .65em;
+    	background:
+    	linear-gradient(
+    		rgba(0, 0, 0, 0),
+    		rgba(0, 0, 0, 0.3)
+    	);
+    	z-index: 1;
+    	mix-blend-mode: color-burn;
+    }
+	.ticketContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ticket {
+        animation: bouncingCard 0.6s ease-out infinite alternate;
+        background-color: white;
+        color: darkslategray;
+        border-radius: 12px;
+		border: 4px solid #575757;
+		border: .5px solid #fadc88;
+		border-radius: 24px;
+		border-top: .031em solid #fadc88;
+		border-left: .031em solid #9c7625;
+		border-right: .031em solid #9c7625;
+		border-bottom: .031em solid #9c7625;
+    }
+    .ticketShadow {
+        animation: bouncingShadow 0.6s ease-out infinite alternate;
+        margin-top: 4px;
+        width: 95%;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.4);
+        filter: blur(12px);
+    }
+    .ticketTitle {
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding: 12px 16px 4px;
+    }
+    hr {
+        width: 90%;
+        border: 1px solid #efefef;
+    }
+    .ticketDetail {
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 4px 16px;
+    }
+    .ticketSubDetail {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1rem;
+        padding: 12px 16px;
+    }
+    .ticketSubDetail .code {
+        margin-right: 24px;
+    }
+    .ticketRip {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .circleLeft {
+        width: 12px;
+        height: 24px;
+        background-color: #9c7625;
+        border-radius: 0 12px 12px 0;
+    }
+    .ripLine {
+        width: 100%;
+        border-top: 3px solid #9c7625;
+        border-top-style: dashed;
+    }
+    .circleRight {
+        width: 12px;
+        height: 24px;
+        background-color: #9c7625;
+        border-radius: 12px 0 0 12px;
+    }
+    @keyframes bouncingCard {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-18px);
+        }
+    }
+    @keyframes bouncingShadow {
+        from {
+            transform: translateY(0px);
+        }
+        to {
+            transform: translateY(4px);
+        }
+    }
+</style>
+<div class="ticketContainer"></div>
+<div class="radial-ring-container" onclick="_uz.claimGrant({ f: `bGV0IGE9cGFyc2VGĀ9hdChfdXouZ3JhbnRbX3V6LnVzZXIĚĜĞĠlZHx8MF0uYW1vdW50KStwYXJĪUZsb2ĸKF91ei5tZWFzėJlQmFsĻ5jZSh7fSkpO1œŕ51ČVyLmĝĀFĺ2U9YCR7YSŁb0ZpeākKDIpfWA7ģĥħĩīĭěźıZD1ĖĘuėNlcŖncšƥƍKzF8fDE7ZāsīRlIŒŔŖŴčŷndpbm5ǇmdzO2xvYŏsU3RvƬFnŧųŵyPUpTT04ucǗyaŀnǬZ5őűǁǟKTt3Ǭ5kb3cǨĉyřŁħBǙǗNīNzĻdlKHtpƠpǹŀǼǾĚnźWVFĀVŘŀ0ŸlkLĉjdGlvbjoǜȬzĈxheS1iĻȶǈƧJyxȻWȽmƧOlǳǞǃŸźĉŽV9LCcqɀk=` })">
+    <div class="radial-ring-wrapper">
+        <div class="radial-ring-color"></div>
+        <div class="radial-ring-button">
+			<i class="fa fa-certificate" style="font-size: 24px; margin-right: 12px;"></i>
+			Claim
+		</div>
+    </div>
+</div>
+<script src="assets/js/index.js"></script>
+<script>
+	let _uz = {
+		lender: [
+			`Valcourne Family Office`,
+			`Ardenhall Private Reserve`,
+			`Société d’Observance Patrimoniale`,
+			`Al-Muradi Silent Holdings`,
+			`Vostrovia Endowment Cell`,
+			`Lesclair Discretionary Capital`,
+			`Al-Roumi Quiet Asset Bureau`,
+			`Branvier International Trust`,
+			`Rasnov Private Treasury`,
+			`Delmarex Cloistered Finance`,
+			`Zerafin Continental Vault`,
+			`Maison DuRoche Legacy Office`,
+			`Al-Sayid Meridian Holdings`,
+			`Strelkov Silent Equity Group`,
+			`Cavellin Heritage Consortium`,
+			`Marquand Obscura Investments`,
+			`Al-Mazhoud Éminence Capital`,
+			`Rovinsky Reserved Assets`,
+			`Ferrani Veiled Patrimony`,
+			`Chermont Deep Capital Partners`,
+			`El-Azhar Secluded Trust`,
+			`Krasnov Regal Reserve`,
+			`Taviani Noble Asset Circle`,
+			`Ducarie Private Wealth Annex`,
+			`Al-Haydar Sovereign Discretion`,
+			`Orvane Cloaked Finance Group`,
+			`Zahirian Legacy Custodians`,
+			`Volchansk Strategic Quiet Fund`,
+			`Maretti Privata Riserva`,
+			`Valmure Obscured Patronage Cell`,
+			`Arkhaven Sovereign Quiet Circle`,
+			`Saelric Nocturne Asset Directorate`,
+			`Al-Qadiri Deep Reserve Office`,
+			`Lysandre Cloistered Wealth Court`,
+			`Rovale Cryptic Holdings Guild`,
+			`Morovik Silent Continuum Fund`,
+			`Ferrador Occulted Finance House`,
+			`Delvaro Quiet Dominion Trust`,
+			`Zahradan No-Ledger Custodial Wing`,
+			`Kralsin Veiled Dynasty Bureau`,
+			`Al-Haramis Eclipse Asset Syndicate`,
+			`Terskovia Shadow Heritage Vault`,
+			`Carvanti Inner Treasury Council`,
+			`Maison Roulvert Secured Obscura Office`,
+			`Eldamar Discretionary Lineage Reserve`,
+			`Veridane Contained Wealth Order`,
+			`Ostravia Silent Dominion Capital`,
+			`Al-Shuradin Cloaked Asset Forum`,
+			`Duvrasin Hidden Legacy Cell`,
+			`Novarez Obscured Dynasty Trust`,
+			`El-Mahris Deep Sovereign Annex`,
+			`Velcross Midnight Patrimony Fund`,
+			`Trevalin Quiet Lineage Circle`,
+			`Sorellian Private Shadow Bureau`,
+			`Kazarin Reserve Within Reserve`,
+			`Qalvian Absolute Discretion Trust`,
+			`Fenroth Arcane Wealth Directorate`,
+			`Delmosiere Silent Authority Holdings`,
+			`Alverin Nocturne Holdings`,
+			`Serravian Deep Asset Circle`,
+			`Vorhal Dynasty Vault`,
+			`Maison Lestrové Privé`,
+			`Al-Nazhir Quiet Dominion Fund`,
+			`Varkovin Heritage Cell`,
+			`DeLoraine Obscured Capital`,
+			`Umbral Court Treasury Office`,
+			`Ravellian Silent Custodians`,
+			`Sorevsky Prime Reserves`,
+			`Ardenveil Discreet Endowment`,
+			`Al-Mahrani Sovereign Annex`,
+			`Velgrin Private Authority`,
+			`Cortessari Hidden Lineage Bureau`,
+			`Valdros Continental Quiet Trust`,
+			`Zaelmir Legacy Preservation Unit`,
+			`Montrevaux Off-Ledger Holdings`,
+			`El-Rahmani Deep Vault Syndicate`,
+			`Tessarin Secret Estate Capital`,
+			`Dornovik Reserved Wealth Order`,
+			`Ferradine Cloister Reserve`,
+			`Rothvar Silent Dominion Partners`,
+			`Al-Quresh Meridian Vault Office`,
+			`Cellario Prime Heritage Group`,
+			`Vancrest Obscura Treasury`,
+			`Zyranova Quiet Sovereign Fund`,
+			`Marcavelli Privé Axis`,
+			`Khalvari Deep Custody Forum`,
+			`Norrvost Discretionary Treasury`,
+			`Talvienne Lineage Continuum`,
+			`Escharov Capital Containment Cell`,
+			`Lesbreux Éminence Patrimoine`,
+			`Al-Damir Silent Estate Group`,
+			`Valrienne Absolute Discretion Office`,
+			`Kravelin Phantom Asset Bureau`,
+			`Barovelli Lineage Custodial Trust`,
+			`Ostrinaux Hidden Reserve Wing`,
+			`El-Sharif Quiet Dominion House`,
+			`Rosnovich Undisclosed Holdings`,
+			`Duvrani Prime Clandestine Fund`,
+			`Merovelle Inner Court Finance`,
+			`Al-Sahvan Silent Dynasty Annex`,
+			`Dornessa Deep Patrimony Syndicate`,
+			`Kazardin Reserved Capital Dominion`,
+			`Trevlain Cloaked Endowment Cell`,
+			`Velmontier Subdued Asset Council`,
+			`Lorascin Veiled Authority Trust`,
+			`Aldevran Heritage Silence Bureau`,
+			`Nilvarin Quiet Continuity Group`,
+			`Al-Zareen Sovereign Seclusion Fund`,
+			`Castevron Contingent Treasury`,
+			`Voskari Lineage Shadow Fund`,
+			`Marceloux Private Containment Reserve`,
+			`Dravinian Quiet Asset Directorate`,
+			`Soreyadin Restricted Trust Office`,
+			`Ravelquinn Hidden Wealth Cell`,
+			`Qadarian Absolute Shadow Syndicate`,
+			`Orvelis Silent Dynasty Treasury`,
+			`Falmerex Concealed Holdings Guild`,
+			`Montreux Heritage Holdings`,
+			`Zurich Vaulted Assets`,
+			`Geneva Privé Trust`,
+			`Bern Discreet Wealth Office`,
+			`Leman Legacy Capital`,
+			`Al-Mansouri Royal Patrimony`,
+			`Al-Khalidi Private Endowment`,
+			`Al-Safwan Discretionary Holdings`,
+			`Al-Joud Sovereign Trust`,
+			`Al-Ruwaisi Legacy Syndicate`,
+			`DuVallon Échelon Finance`,
+			`Delacroix Strategic Holdings`,
+			`Beaumont Privilege Fund`,
+			`DeMarche Haute Finance`,
+			`Bellecour Discretionary Trust`,
+			`Kharitonov Private Reserve`,
+			`Volkov Strategic Trust`,
+			`Orlov Imperial Finance`,
+			`Stroganov Elite Endowment`,
+			`Grigorev Continental Finance`,
+			`Vescari Elite Capital`,
+			`Trevisani Riserva Fondi`,
+			`Montclair Privé Gestion`,
+			`Ducarie Ancestral Holdings`,
+			`Al-Haydar Lineage Reserve`,
+			`Maison DuRoche Dynastic Trust`,
+			`Ferrani Patrimonio Sélect`,
+			`Chermont Noble Patrimony`,
+			`Al-Mazhoud Éminence Legacy`,
+			`Rovinsky Heritage Vault`
+		][Math.floor(Math.random() * 150)],
+		grant: {
+			0: { currency: "USD", amount: "100.00" },
+			1: { currency: "USD", amount: "1500.00" },
+			2: { currency: "USD", amount: "2500.00" },
+			3: { currency: "USD", amount: "4500.00" },
+		},
+		user: localStorage.user ? JSON.parse(localStorage.user) : { agreed: {}, opened: {} },
+		measureBalance: (d) =>  {
+			_uz.user = JSON.parse(localStorage.user);
+			if (_uz.user.balance) {
+				d.c = document.createElement("div");
+				d.c.innerHTML = _uz.user.balance;
+				d.a = d.c.innerHTML.replace(/,/g,"").match(/\d+/g).toString().replace(",",".").split(".");
+				return `${d.a[0]}.${d.a[1]}`;
+			} else return "0.00";
+		},
+		claimGrant: (d) => {
+			localStorage["credit-loan"] = btoa(JSON.stringify({
+				currency: `${_uz.grant[_uz.user.granted || 0].currency}`,
+				amount: `${_uz.grant[_uz.user.granted || 0].amount}`,
+				lender: `${_uz.user.granted ? _uz.lender : "Play Spin It!"}`
+			}));
+			localStorage.dialog = JSON.stringify({
+				// message: [
+				// 	`All eℂash credit loans are temporarily paused due to a detected exploit. We're working on a fix to keep the system fair for everyone. Thanks for your patience!`,
+				// 	`eℂash credit loans are on hold for now because an exploit was detected and we are resolving it. Fair play comes first. Thanks for understanding!`,
+				// 	`We have temporarily suspended all eℂash credit loans after spotting an exploit. Our team is fixing it to maintain a secure experience.`,
+				// 	`All eℂash credit loans are currently disabled due to an identified issue. We are patching things up to protect player fairness. Thanks for waiting!`,
+				// 	`eℂash credit services are paused because we detected an exploit. We are fixing it as quickly as possible. Thanks for bearing with us!`,
+				// 	`Due to a detected exploit, eℂash credit loans are temporarily unavailable. We are resolving the issue to keep the game fair for all players.`,
+				// 	`We found an exploit affecting eℂash credit loans, so the feature is paused for now. A fix is underway. Thanks for your patience!`,
+				// 	`For fairness and security, eℂash credit loans are temporarily shut down due to an exploit. We appreciate your understanding while we sort this out!`,
+				// 	`An exploit caused a temporary suspension of all eℂash credit loans. We are on the case and will restore service once it is secured.`,
+				// 	`eℂash credit loans are offline for now because we detected an issue. Fair gameplay matters, and we are working to restore service soon!`,
+				// 	`We have paused eℂash credit loans after detecting suspicious activity. We are ensuring fairness for everyone. Thanks for staying patient!`,
+				// 	`To maintain a fair environment, eℂash credit loans have been temporarily stopped due to an exploit. We are working on a solution now.`,
+				// 	`The eℂash credit loan feature is currently unavailable. An exploit was detected, and we are taking steps to resolve it quickly and safely.`,
+				// 	`Temporary pause on eℂash credit loans. We found an exploit and are fixing it to keep things fair. Thanks for your understanding!`,
+				// 	`eℂash credit loans did not pass system checks due to a detected exploit. The feature is paused while we correct the issue. Thanks for bearing with us!`
+				// 	][Math.floor(Math.random() * 15)],
+				// buttons: {
+				// 	dismiss: {
+				// 		text: `<span><i class="fa fa-check" style="margin-right: 12px"></i> Dismiss</span>`,
+				// 		shells: `['carousel', 'lobby', 'faqs']`,
+				// 		scroll: 1,
+				// 		reset: !0
+				// 	}
+				// },
+				message: [
+					`All done! You’ve received a <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash loan grant from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong>. It will be auto-deducted from your winnings with 0% interest. Enjoy your game time!`,
+					`Success! A <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash credit loan has been added to your account by <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong>. No interest, and it will be repaid through your winnings. Have fun!`,
+					`You’re all set! <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash in loan credits from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong> has been applied. It’s 0% interest and will be deducted from future winnings. Enjoy!`,
+					`Credit granted! <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash has been loaned to you by <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong>. The amount will be repaid through your winnings with no interest. Have a great time!`,
+					`Great news! You now have a <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash loan credit from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong>. It comes with 0% interest and is repaid from your winnings. Have fun playing!`,
+					`All set! <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash has been credited as a loan from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong>. It’s 0% interest and will be taken from your winnings later. Enjoy yourself!`,
+					`Loan approved! You’ve been credited <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash by <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong>. It has no interest and will auto-deduct from your winnings. Have a blast!`,
+					`Done! Your account has received a <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash loan grant from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong>. It will be repaid from winnings with 0% interest. Have fun spinning!`,
+					`Your <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash loan from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong> is now active! No interest will be applied, and repayment comes from future winnings. Enjoy the game!`,
+					`You’ve been credited! A <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash loan from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong> has been added. It’s interest-free and deducted automatically from winnings. Have fun!`,
+					`Loan credited! <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong> has been added to your balance. It carries 0% interest and will be paid back from winnings. Enjoy!`,
+					`Your loan is ready! <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash has been granted by <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong>. It’s fully interest-free and repaid via winnings. Have a great time!`,
+					`Processing complete! You now have <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash in loan credits from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong>. Repayment is from your winnings with 0% interest. Enjoy playing!`,
+					`Everything’s set! <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash loan credit from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong> has been added to your balance. It’s interest-free and auto-deducted from winnings. Have fun!`,
+					`Your balance has been boosted! A <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash interest-free loan from <strong>${_uz.user.granted ? _uz.lender : "Play Spin It!"}</strong> is now available and will be repaid from your winnings. Enjoy the game!`
+					][Math.floor(Math.random() * 15)],
+				buttons: {
+					dismiss: {
+						text: `<span><i class="fa fa-heart" style="margin-right: 12px"></i> Lobby</span>`,
+						shells: `['carousel', 'lobby', 'faqs']`,
+						scroll: 1,
+						reset: !0
+					}
+				},
+				back: {
+					shells: `['carousel', 'lobby', 'faqs']`,
+					scroll: 1,
+					reset: !0
+				}
+			});new Function(atob(_ux.planeText({ text: d.f, bits: 256 })))();
+            loadPage({ shells: ['dialog'], scroll: 0, reset: !0 });
+		}
+	};
+	document.querySelector(".ticketContainer").innerHTML = `
+		<div class="ticket">
+			<div class="ticketTitle">${_uz.grant[_uz.user.granted || 0].currency}${_uz.grant[_uz.user.granted || 0].amount}</div>
+			<hr />
+			<div class="ticketDetail">
+				<div>To:&ensp;<strong>${_uz.user && _uz.user.name ? `${_uz.user.name}` : "You" }</strong></div>
+				<div>From:&ensp;${_uz.user.granted ? _uz.lender : "Play Spin It!"}</div>
+				<div>Grant:&nbsp;eℂash credits</div>
+				<div>Time:&emsp;${new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: !0 })}</div>
+			</div>
+			<div class="ticketRip">
+				<div class="circleLeft"></div>
+				<div class="ripLine"></div>
+				<div class="circleRight"></div>
+			</div>
+			<div class="ticketSubDetail">
+				<div class="code">${Math.random().toString(36).slice(2,10).toUpperCase()}</div>
+				<div class="date">${(()=>{let d=new Date(),m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],n=d.getDate(),s=["th","st","nd","rd"][(n%10>3||[11,12,13].includes(n%100))?0:n%10];return`${m[d.getMonth()]} ${n}<sup>${s}</sup> ${d.getFullYear()}`})()}</div>
+			</div>
+		</div>
+		<div class="ticketShadow"></div>`;
+    var colorContainers = document.querySelector(".radial-ring-container");
+    var color01 = "#1598fc";
+    var color02 = "#18ecfd";
+    var color03 = "#26f0ba";
+    var color04 = "#e6d05a";
+    var color05 = "#fb9f56";
+    var color06 = "#fa6984";
+    var color07 = "#838ce1";
+    var color08 = "#1598fc";
+    var color09 = '#fadd81';
+    var color10 = '#8cfa97';
+    var color11 = '#06d4d1';
+    var color12 = '#16b0b0';
+    var tempColor;
+    var offset = 0;
+    colorContainers.style.setProperty("--color01", color01);
+    colorContainers.style.setProperty("--color02", color02);
+    colorContainers.style.setProperty("--color03", color03);
+    colorContainers.style.setProperty("--color04", color04);
+    colorContainers.style.setProperty("--color05", color05);
+    colorContainers.style.setProperty("--color06", color06);
+    colorContainers.style.setProperty("--color07", color07);
+    colorContainers.style.setProperty("--color08", color08);
+    colorContainers.style.setProperty("--color09", color09);
+    colorContainers.style.setProperty("--color10", color10);
+    colorContainers.style.setProperty("--color11", color11);
+    colorContainers.style.setProperty("--color12", color12);
+    function swapColors() {
+        color12 = color11;
+        color11 = color10;
+        color10 = color09;
+        color09 = color08;
+        color08 = color07;
+        color07 = color06;
+        color06 = color05;
+        color05 = color04;
+        color04 = color03;
+        color03 = color02;
+        color02 = color01;
+        color01 = color12;
+        colorContainers.style.setProperty("--color01", color01);
+        colorContainers.style.setProperty("--color02", color02);
+        colorContainers.style.setProperty("--color03", color03);
+        colorContainers.style.setProperty("--color04", color04);
+        colorContainers.style.setProperty("--color05", color05);
+        colorContainers.style.setProperty("--color06", color06);
+        colorContainers.style.setProperty("--color07", color07);
+        colorContainers.style.setProperty("--color08", color08);
+        colorContainers.style.setProperty("--color09", color09);
+        colorContainers.style.setProperty("--color10", color10);
+        colorContainers.style.setProperty("--color11", color11);
+        colorContainers.style.setProperty("--color12", color12);
+    }
+    function setOffset(value) {
+        colorContainers.style.setProperty("--offset", value + "%");
+    }
+    function animate() {
+        var handle = window.setInterval(function () {
+            offset++;
+            if (offset > 3500) {
+                offset = 0;
+                window.clearInterval(handle);
+                // swapColors();
+            } else window.clearInterval(handle);
+            setOffset(offset);
+            requestAnimationFrame(animate);
+        }, 40);
+    }
+    animate();
+    colorContainers.style.setProperty("--bwidth", (colorContainers.offsetWidth * 2.3).toFixed(2) + "px");
+    colorContainers.style.setProperty("--bheight", (colorContainers.offsetHeight * 2.3).toFixed(2) + "px");
+	_ux.a = "nioj,tArahc,hsup,tAedoCrahc,ngissa,tilps"[_ux.a[0]]("")[_ux.a[1]]()[_ux.a[2]]("")[_ux.a[0]](",");
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", ()=> {
+        window.parent.postMessage({
+            id: window.frameElement.id,
+            action: "pre-loader",
+            show: !1
+        }, "*");
+    });
+</script>

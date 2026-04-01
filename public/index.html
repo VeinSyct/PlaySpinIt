@@ -1,0 +1,331 @@
+<meta http-equiv="Content-Type" content="text/html">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, user-scalable = 0, viewport-fit = cover, shrink-to-fit = no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Full Screen">
+<meta name="pinterest" content="nopin">
+<meta name="referrer" content="origin">
+<meta property="og:type" content="webapp">
+<meta property="og:title" content="Play Spin It!">
+<meta property="og:description" content="Play Spin It! is an exclusive online gambling destination for the elite, where luxury, excitement, and high-stakes entertainment come together in one seamless experience.">
+<meta property="og:image" content="assets/images/og.jpg">
+<meta property="og:url" content="https://playspin.web.app">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Play Spin It!">
+<meta name="twitter:description" content="Play Spin It! is an exclusive online gambling destination for the elite, where luxury, excitement, and high-stakes entertainment come together in one seamless experience.">
+<meta name="twitter:image" content="assets/images/og.jpg">
+<meta name="twitter:url" content="https://playspin.web.app">
+<meta name="description" content="Play Spin It! is an exclusive online gambling destination for the elite, where luxury, excitement, and high-stakes entertainment come together in one seamless experience.">
+<meta name="application-name" content="Play Spin It!">
+<meta name="keywords" content="casino,online gambling,slots,poker,roulette,high stakes,luxury betting,exclusive games,Play Spin It,VIP casino">
+<meta name="author" content="The Play Makers">
+<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.webp">
+<title>Play Spin It!</title>
+<link rel="icon" type="image/png" href="./assets/images/favicon.webp"/>
+<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="assets/css/snap.css" />
+<link rel="stylesheet" href="assets/css/spinit.css" />
+<style>
+    .branding-icon-cont {
+        position: fixed;
+        left: 42px;
+        top: 64px;
+        transform-origin: top left;
+        animation: floating 3s ease-in-out infinite;
+        scale: 1;
+    }
+    .branding-icon {
+        position: relative;
+        height: 200px;
+        width: 200px;
+        transition: transform .3s ease;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+    }
+    .branding-icon {
+        background: url("assets/images/seven.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        filter: drop-shadow(0px 6px 10px rgba(0,0,0,0.45));
+    }
+    .querry-icon-cont {
+        position: fixed;
+        left: 36px;
+        bottom: 24px;
+        transform-origin: bottom right;
+        animation: floating 3s ease-in-out infinite;
+        scale: 1;
+    }
+    .querry-icon {
+        position: relative;
+        height: 86px;
+        width: 86px;
+        transition: transform .3s ease;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+    }
+    .querry-icon {
+        background: url("assets/images/light bulb.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        filter: drop-shadow(0px 6px 10px rgba(0,0,0,0.45));
+    }
+    .contact-icon-cont {
+        position: fixed;
+        left: 124px;
+        bottom: 24px;
+        transform-origin: bottom right;
+        animation: floating 3s ease-in-out infinite;
+        scale: 1;
+    }
+    .contact-icon {
+        position: relative;
+        height: 86px;
+        width: 86px;
+        transition: transform .3s ease;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+    }
+    .contact-icon {
+        background: url("assets/images/contact.webp");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        filter: drop-shadow(0px 6px 10px rgba(0,0,0,0.45));
+    }
+    .branding-icon:hover,
+    .querry-icon:hover,
+    .contact-icon:hover {
+        filter: drop-shadow(0px 6px 10px rgba(0,0,0,0.45));
+        transform: scale(1.03);
+    }
+    .branding-icon:active,
+    .querry-icon:active,
+    .contact-icon:active {
+        filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.6));
+        transform: scale(0.98);
+    }
+    .balance-button {
+        display: none;
+        position: fixed;
+        padding: 0;
+        flex-wrap: wrap;
+        top: 42px;
+        right: 36px;
+        transform-origin: top right;
+        color: rgba(120, 140, 200, .18);
+        font-size: 2.5em;
+        font-weight: bold;
+        vertical-align: middle;
+        line-height: 1.3em;
+        letter-spacing: .12em;
+        background: #0f3854;
+        background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 70%);
+        text-shadow:
+            -3px -4px 50px rgba(120, 140, 200, .18),
+            #222 -1px -1px 1px;
+        box-shadow:
+            0px 0px 1px 1px #020202,
+            -1px -2px 20px 10px rgba(140, 145, 180, .18) inset;
+        border-top: .031em solid #fadc88;
+        border-left: .031em solid #9c7625;
+        border-right: .031em solid #9c7625;
+        border-bottom: .031em solid #9c7625;
+        border-radius: 24px;
+        transition: transform .3s ease;
+        animation: floating 3.6s ease-in-out infinite;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+    }
+    .balance-button {
+        padding: 8px 36px;
+        transition: all 1800ms cubic-bezier(0.53, .09, .84, .825);
+        transition-timing-function: cubic-bezier(0.53, .09, .84, .825);
+    }
+    .balance-button:hover {
+        color: #daf6ff;
+        box-shadow: rgba(60, 64, 67, .3) 0px 1px 2px 0px, rgba(60, 64, 67, .15) 0px 1px 3px 1px;
+        text-shadow:
+            0 0 20px #0aafe6,
+            0 0 20px rgba(10, 175, 230, 0);
+    }
+    .balance-button:active {
+        box-shadow:
+            rgba(0, 0, 0, .25) 0px .0625em .0625em,
+            rgba(0, 0, 0, .25) 0px .125em .5em,
+            rgba(255, 255, 255, .1) 0px 0px 0px 1px inset;
+    }
+    .balance {
+        white-space:nowrap;
+    }
+    @keyframes floating {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-12px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    /* Tablet portrait */
+    @media only screen and (min-width: 600px) and (max-width: 1180px) and (orientation: portrait) {
+        .branding-icon-cont {
+            left: 24px;
+            top: 36px;
+        }
+        .balance-button {
+            top: 24px;
+            right: 17px;
+            scale: .8;
+        }
+        .branding-icon {
+            height: 120px;
+            width: 120px;
+        }
+        .querry-icon-cont {
+            left: 24px;
+            bottom: 24px;
+        }
+        .contact-icon-cont {
+            left: 109px;
+            bottom: 24px;
+        }
+    }
+    /* Tablet landscape */
+    @media only screen and (min-width: 600px) and (max-width: 1180px) and (orientation: landscape) {
+        .branding-icon-cont {
+            left: 24px;
+            top: 36px;
+        }
+        .balance-button {
+            top: 24px;
+            right: 17px;
+            scale: .8;
+        }
+        .branding-icon {
+            height: 120px;
+            width: 120px;
+        }        
+        .querry-icon-cont {
+            left: 24px;
+            bottom: 24px;
+        }
+        .contact-icon-cont {
+            left: 109px;
+            bottom: 24px;
+        }
+    }
+    /* Mobile portrait */
+    @media only screen and (max-width: 430px) and (orientation: portrait) {
+        .branding-icon-cont {
+            left: 17px;
+            top: 27px;
+        }
+        .balance-button {
+            top: 17px;
+            right: 14px;
+            scale: .52;
+        }
+        .branding-icon {
+            height: 64px;
+            width: 64px;
+        }
+        .querry-icon-cont {
+            left: 6px;
+            bottom: 6px;
+        }
+        .querry-icon {
+            height: 64px;
+            width: 64px;
+        }
+        .contact-icon-cont {
+            left: 64px;
+            bottom: 6px;
+        }
+        .contact-icon {
+            height: 64px;
+            width: 64px;
+        }
+    }
+    /* Mobile landscape */
+    @media only screen and (min-width: 414px) and (max-width: 932px) and (orientation: landscape) {
+        .branding-icon-cont {
+            left: 17px;
+            top: 27px;
+        }
+        .balance-button {
+            top: 17px;
+            right: 14px;
+            scale: .56;
+        }
+        .branding-icon {
+            height: 64px;
+            width: 64px;
+        }
+        .querry-icon-cont {
+            left: 6px;
+            bottom: 6px;
+        }
+        .querry-icon {
+            height: 64px;
+            width: 64px;
+        }
+        .contact-icon-cont {
+            left: 64px;
+            bottom: 6px;
+        }
+        .contact-icon {
+            height: 64px;
+            width: 64px;
+        }
+    }
+</style>
+<button class="balance-button modal-frame" onclick="delete localStorage.url; for (let i = 0, j = ['branding', 'querry', 'contact']; i < j.length; i++) _pm.decam.unfade(document.querySelector(`.${j[i]}-icon-cont`), 120); loadShells({ shells: ['unlock'], scroll: 0, i: _uz.s, reset: !0 })">
+    <div class="modal-front"></div>
+    <div class="modal-overlay"></div>
+    <span class="balance">$ 0.00</span>
+</button>
+<div id="rithmytic" hidden></div>
+<div class="branding-icon-cont" onclick="delete localStorage.url; if(_pm.decam) { for (let i = 0, j = ['contact-icon-cont', 'querry-icon-cont', 'balance-button']; i < j.length; i++) _pm.decam.unfade(document.querySelector(`.${j[i]}`), 120); loadShells({ shells: ['carousel', 'lobby', 'faqs'], scroll: 1, i: _uz.s, reset: !0 }); _pm.decam.displayBalance({ balance: _uz.user.balance }) }">
+    <div class="branding-icon"></div>
+</div>
+<div class="querry-icon-cont" onclick="_pm.decam.fade(this, 120); _pm.decam.fade(document.querySelector('.contact-icon-cont'), 120); loadShells({ shells: ['chat'], scroll: 0, i: _uz.s, reset: !0 })" style="background: url('assets/images/light\ bulb.webp')">
+    <div class="querry-icon"></div>
+</div>
+<div class="contact-icon-cont" onclick="_pm.decam.fade(this, 120); loadShells({ shells: ['contact'], scroll: 0, i: _uz.s, reset: !0 })" style="background: url('assets/images/contact.webp')">
+    <div class="contact-icon"></div>
+</div>
+<div class="pre-loader">
+    <div class="inner one"></div>
+    <div class="inner two"></div>
+    <div class="inner three"></div>
+</div>
+<div class="lcd-wobbley lcd-screen-on">
+    <div class="lcd-content">
+        <nav></nav>
+        <div class="mobile-menu" id="mobileMenu"></div>
+        <div class="snap-container">
+            <div id="shell-0">
+                <div>
+                    <div>
+                        <iframe id="iframe-unlock" src="assets/layouts/shells" hidden></iframe>
+                    </div>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+<script src="assets/js/index.js"></script>
+<script src="assets/js/shells.js"></script>
+<script>
+    window.parent.postMessage({ isLive: !0 }, "*");
+</script>

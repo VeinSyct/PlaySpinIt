@@ -1,0 +1,504 @@
+<meta name="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, user-scalable = 0, viewport-fit = cover, shrink-to-fit = no">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/metallicgold.css" />
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+    :root {
+        --left-position: 55%;
+        --transition-time: 1.2s cubic-bezier(0.25, 1, .5, 1);
+    }
+    .carousel {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-origin: left top;
+        overflow: hidden;
+        animation: fadeIn 1000ms ease;
+        -webkit-animation: fadeIn 1000ms ease;
+	}
+	@keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .carousel .list .item {
+        width: 180px;
+        height: 250px;
+        position: absolute;
+        bottom: 150px;
+        left: calc(var(--left-position) + 3%);
+        border-radius: 20px;
+        overflow: hidden;
+        background-position: center;
+        background-size: cover;
+        z-index: 100;
+        transform: translate(0, 0px);
+        transition: all var(--transition-time);
+    }
+    .carousel .list .item::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+    .carousel .list .item:nth-child(1),
+    .carousel .list .item:nth-child(2) {
+        bottom: 0px;
+        left: 0;
+        border-radius: 0;
+        transform: translate(0, 0px);
+        width: 100%;
+        height: 100%;
+    }
+    .carousel .list .item:nth-child(3) {
+        left: var(--left-position);
+    }
+    .carousel .list .item:nth-child(4) {
+        transition-delay: .1s;
+        left: calc(var(--left-position) + 200px);
+    }
+    .carousel .list .item:nth-child(5) {
+        transition-delay: .2s;
+        left: calc(var(--left-position) + 400px);
+    }
+    .carousel .list .item:nth-child(6) {
+        transition-delay: .3s;
+        left: calc(var(--left-position) + 600px);
+    }
+    .carousel .list .item:nth-child(n + 7) {
+        transition-delay: .4s;
+        left: calc(var(--left-position) + 800px);
+    }
+    .list .item .content {
+        position: absolute;
+        text-align: left;
+        color: #fff;
+        z-index: 3;
+        left: 0;
+        top: 100%;
+        transform: translateY(-100%);
+        width: 100%;
+        padding: 10px;
+        transition: all var(--transition-time);
+    }
+    .content .title::before {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 20px;
+        background-color: #fff;
+        margin-bottom: 10px;
+    }
+    .content .title {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #ffffff;
+        font-weight: bold;
+        line-height: 1;
+        margin-bottom: 10px;
+        transition: all var(--transition-time);
+        position: relative;
+        max-width: 76vw;
+        text-shadow: 2px 4px 6px rgba(0, 0, 0, .8), 0 0 6px rgba(255, 255, 255, .8);
+    }
+    .content .title::after {
+        content: attr(data-item);
+        border-radius: 50%;
+        color: #fff;
+        font-size: 12px;
+        position: absolute;
+        top: -20px;
+        left: 0px;
+        z-index: 2;
+        font-weight: 400;
+        animation: underlineGrow 4s ease-in-out infinite alternate;
+    }
+    .content .name {
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: 700;
+        line-height: 1;
+        transition: all var(--transition-time);
+        margin-bottom: 10px;
+        max-width: 67vw;
+        text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.8);
+        animation: underlineGrow 3s ease-in-out infinite alternate;
+    }
+    .content .des {
+        font-size: 16px;
+        font-weight: 400;
+        transition: all var(--transition-time);
+        opacity: 0;
+        display: none;
+        max-width: 42vw;
+        background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, .8) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 2px 4px 6px rgba(0, 0, 0, .36);
+        animation: underlineGrow 2s ease-in-out infinite alternate;
+    }
+    @keyframes underlineGrow {
+        from {
+            filter: brightness(.96);
+        }
+        to {
+            filter: brightness(1.24);
+        }
+    }
+    .list .item:nth-child(1) .content,
+    .list .item:nth-child(2) .content {
+        transform: translateY(-50%);
+        left: 100px;
+        width: 600px;
+        top: 50%;
+        padding: 0;
+    }
+    .list .item:nth-child(1) .content .title::before,
+    .list .item:nth-child(2) .content .title::before {
+        width: 50px;
+        height: 3px;
+        margin-bottom: 20px;
+    }
+    .list .item:nth-child(1) .content .title::after,
+    .list .item:nth-child(2) .content .title::after {
+        font-size: 20px;
+        top: -40px;
+        left: 15px;
+    }
+    .list .item:nth-child(1) .content .title,
+    .list .item:nth-child(2) .content .title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    .list .item:nth-child(1) .content .name,
+    .list .item:nth-child(2) .content .name {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .list .item:nth-child(1) .content .des,
+    .list .item:nth-child(2) .content .des {
+        font-size: 16px;
+        opacity: 1;
+        display: block;
+        width: 400px;
+    }
+    @keyframes animate {
+        from {
+            opacity: 0;
+            transform: translate(0, 100px);
+            filter: blur(33px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate(0);
+            filter: blur(0);
+        }
+    }
+    .arrows {
+        position: absolute;
+        bottom: 50px;
+        left: var(--left-position);
+        width: calc(100% - var(--left-position) - 2%);
+        z-index: 100;
+        display: flex;
+        gap: 5%;
+        align-items: center;
+    }
+    .arrows button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        border-radius: 50%;
+        border: none;
+        color: rgb(255, 255, 255);
+        background-color: transparent;
+        outline: none;
+        font-size: 25px;
+        font-weight: bold;
+        transition: all var(--transition-time);
+        cursor: pointer;
+    }
+    .arrows button > span {
+        position: absolute;
+        text-align: center;
+    }
+    .arrows button:hover {
+        scale: 1.1;
+    }
+    .arrows button:active {
+        scale: .96;
+    }
+    .slide-number {
+        font-size: 25px;
+        color: #ffffff;
+        font-weight: 400;
+        margin-left: auto;
+        letter-spacing: 5px;
+        opacity: 0;
+        animation: animate .5s ease-in-out .3s 1 forwards;
+    }
+    .progress-bar-container {
+        width: 60%;
+        height: 3px;
+        background-color: rgba(255, 255, 255, .5);
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    .progress-bar {
+        height: 100%;
+        width: 100%;
+        background-color: #d36e10;
+        transition: all var(--transition-time);
+    }
+    .carousel .timeRunning {
+        position: fixed;
+        z-index: 1000;
+        width: 0%;
+        height: 4px;
+        background-color: #ffffff;
+        left: 0;
+        top: 0;
+        animation: runningTime 7s linear 1 forwards;
+    }
+    @keyframes runningTime {
+        from {
+            width: 0%;
+        }
+        to {
+            width: 100%;
+        }
+    }
+    .youtube-button {
+        left: 20px;
+    }
+    /* Tablet portrait */
+    @media only screen and (min-width: 600px) and (max-width: 1180px) and (orientation: portrait) {
+    }
+    /* Tablet landscape */
+    @media only screen and (min-width: 600px) and (max-width: 1180px) and (orientation: landscape) {
+    }
+    /* Mobile portrait */
+    @media only screen and (max-width: 430px) and (orientation: portrait) {
+        .carousel {
+            width: 117%;
+            height: 117%;
+            scale: .86;
+        }
+        .content {
+            margin-left: -64px;
+        }
+    }
+    /* Mobile landscape */
+    @media only screen and (min-width: 414px) and (max-width: 932px) and (orientation: landscape) {
+        .carousel {
+            width: 157%;
+            height: 157%;
+            scale: .64;
+        }
+    }
+</style>
+<div class="carousel">
+    <div class="list">
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 001.webp')">
+            <div class="content">
+                <div class="title">FUN AND EASY</div>
+                <div class="name">Lucky Spin</div>
+                <div class="des">It’s pure fun, quick spins, easy rules. Try your luck on the reels and enjoy the ride, wins are paid on-site at our cashier.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 002.webp')">
+            <div class="content">
+                <div class="title">EXCITING REELS</div>
+                <div class="name">Golden Reels</div>
+                <div class="des">Spin the reels and discover your fortune. Every play is simple and thrilling, winnings are paid instantly at the establishment.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 004.webp')">
+            <div class="content">
+                <div class="title">OFFLINE AND RELIABLE</div>
+                <div class="name">Reel Adventure</div>
+                <div class="des">Instant reel action with no server needed. Play safely and cash out easily at our cashier or exchange desk.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 005.webp')">
+            <div class="content">
+                <div class="title">FAST CASHOUTS</div>
+                <div class="name">Reel Magic</div>
+                <div class="des">Spin the reels for excitement and rewards. Local e-cash validation ensures fast payouts handled by the establishment.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 006.webp')">
+            <div class="content">
+                <div class="title">TRUSTED AND REWARDING</div>
+                <div class="name">Mega Jackpot</div>
+                <div class="des">Enjoy safe, offline reel machines. Server-free play with winnings collected directly at our cashier or exchange.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 007.webp')">
+            <div class="content">
+                <div class="title">EASY TO START</div>
+                <div class="name">Quick Play</div>
+                <div class="des">No complicated setup, just sit, spin and win. Perfect for beginners and pros, payouts are handled instantly on-site.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 008.webp')">
+            <div class="content">
+                <div class="title">NO INTERNET NEEDED</div>
+                <div class="name">Offline Reels</div>
+                <div class="des">Play anytime without worrying about connections. Server-free machines ensure secure and private fun, winnings redeemable locally.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 009.webp')">
+            <div class="content">
+                <div class="title">REAL REWARDS</div>
+                <div class="name">Prize Reels</div>
+                <div class="des">Every spin brings real excitement and real payouts. Exchange your e-cash credits directly at the establishment for instant rewards.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 010.webp')">
+            <div class="content">
+                <div class="title">EASY CASH EXCHANGE</div>
+                <div class="name">Credit Convert</div>
+                <div class="des">Change your e-cash credits anytime, quick and transparent through the cashier. The most convenient reel experience around.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 011.webp')">
+            <div class="content">
+                <div class="title">PLAY YOUR WAY</div>
+                <div class="name">Freedom Spin</div>
+                <div class="des">Choose your bets and play at your pace. No logins, no servers, just authentic reel excitement and easy offline payouts.</div>
+            </div>
+        </div>
+        <div class="item modal-frame" style="background-image: url('assets/images/casino 012.webp')">
+            <div class="content">
+                <div class="title">YOUR LUCK, YOUR CONTROL</div>
+                <div class="name">Personal Jackpot</div>
+                <div class="des">Take charge of your play, test your luck in a safe server-free environment where every win is paid directly in-house.</div>
+            </div>
+        </div>
+    </div>
+    <div class="arrows">
+        <button class="prev">
+            <span>&#10094;</span>            
+        </button>
+        <button class="next">
+            <span>&#10095;</span>
+        </button>
+        <div class="slide-number"></div>
+    </div>
+    <div class="timeRunning"></div>
+</div>
+<script>
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+    const carousel = document.querySelector(".carousel");
+    const list = document.querySelector(".list");
+    const items = Array.from(document.querySelectorAll(".item"));
+    const runningTimeBar = document.querySelector(".carousel .timeRunning");
+    const TIME_RUNNING = 1500;
+    const TIME_AUTO_NEXT = 3500;
+    let transitionTimeout;
+    let autoNextTimeout;
+    const arrowsDiv = document.querySelector(".arrows");
+    const progressBarContainer = document.createElement("div");
+    progressBarContainer.className = "progress-bar-container";
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar";
+    progressBarContainer.appendChild(progressBar);
+    arrowsDiv.appendChild(progressBarContainer);
+    nextBtn.addEventListener("click", () => handleSliderNavigation("next"));
+    prevBtn.addEventListener("click", () => handleSliderNavigation("prev"));
+    items.forEach((item, index) => {
+        item.querySelector(".title").setAttribute("data-item", index + 1);
+    });
+    autoNextTimeout = setTimeout(() => {
+        nextBtn.click();
+    }, TIME_AUTO_NEXT);
+    resetAnimation();
+    afterSlideChange();
+    function resetAnimation() {
+        runningTimeBar.style.animation = "none";
+        runningTimeBar.offsetHeight;
+        runningTimeBar.style.animation = `runningTime ${TIME_AUTO_NEXT / 1000}s linear forwards`;
+    }
+    function handleSliderNavigation(direction) {
+        const sliderItems = list.querySelectorAll(".item");
+        if (direction === "next") {
+            list.appendChild(sliderItems[0]);
+            carousel.classList.add("next");
+        } else if (direction === "prev") {
+            list.prepend(sliderItems[sliderItems.length - 1]);
+            carousel.classList.add("prev");
+        }
+        afterSlideChange();
+    }
+    function afterSlideChange() {
+        const slideNumberElement = document.querySelector(".slide-number");
+        if (slideNumberElement) slideNumberElement.remove();
+        const sliderItems = Array.from(list.querySelectorAll(".item"));
+        const activeItem = parseInt(sliderItems[1].querySelector(".title").getAttribute("data-item"));
+        const activeIndex = activeItem < 10 ? `0${activeItem}` : activeItem.toString();
+        const div = document.createElement("div");
+        div.classList.add("slide-number");
+        div.textContent = `${activeIndex}/${sliderItems.length}`;
+        arrowsDiv.appendChild(div);
+        updateProgressBar();
+        resetCarouselState();
+    }
+    function updateProgressBar() {
+        const totalSlides = items.length;
+
+        const sliderItems = Array.from(list.querySelectorAll(".item"));
+        const activeItem = parseInt(sliderItems[0].querySelector(".title").getAttribute("data-item")) + 1;
+        const progressPercentage = (activeItem / totalSlides) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+    }
+    function resetCarouselState() {
+        clearTimeout(transitionTimeout);
+        clearTimeout(autoNextTimeout);
+        transitionTimeout = setTimeout(() => {
+            carousel.classList.remove("next");
+            carousel.classList.remove("prev");
+        }, TIME_RUNNING);
+        autoNextTimeout = setTimeout(() => {
+            nextBtn.click();
+        }, TIME_AUTO_NEXT);
+        resetAnimation();
+    }
+</script>
+<script src="assets/js/index.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", ()=> {
+        window.parent.postMessage({
+            id: window.frameElement.id,
+            action: "pre-loader",
+            show: !1
+        }, "*");
+    });
+</script>

@@ -1,0 +1,771 @@
+<meta name="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, user-scalable = 0, viewport-fit = cover, shrink-to-fit = no">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/metallicgold.css" />
+<style>
+    body {
+        animation: fadeIn 1000ms ease;
+        -webkit-animation: fadeIn 1000ms ease;
+	}
+	@keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+	section {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+		height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    }
+	.dialog-form {
+        margin: 0 auto 24px;
+        padding: 64px 40px;
+        max-width: 600px;
+        min-width: 50%;
+        color: white;
+        border-radius: 25px;
+        pointer-events: auto;
+    }
+	.form-group {
+        margin-bottom: 24px;
+        position: relative;
+    }
+    .form-label {
+        margin-bottom: 8px;
+        display: block;
+        color: rgba(255, 255, 255, .9);
+        font-weight: 500;
+        font-size: .95rem;
+    }
+    .metallic-button {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .metallic-button > button {
+        position: relative;
+        padding: 12px 24px;
+        font-size: 1.1rem;
+        color: rgba(120, 140, 200, 1);
+        background: 
+            linear-gradient(
+                90deg,
+                hsla(230, 35%, 15%, .5) 0%,
+                hsla(245, 30%, 40%, .5) 15%,
+                hsla(230, 55%, 45%, .5) 40%,
+                hsla(225, 20%, 30%, .5) 60%,
+                hsla(235, 25%, 25%, .5) 80%,
+                hsla(225, 50%, 16%, .5) 100%
+            ),
+            linear-gradient(45deg, Black 0, #333333 20%, #666666 40%, #4d4d4d 70%, #000000 100%);
+        border-radius: 12px;
+        border: 4px solid #575757;
+        border: .5px solid #fadc88;
+        border-top: .031em solid #fadc88;
+        border-left: .031em solid #9c7625;
+        border-right: .031em solid #9c7625;
+        border-bottom: .031em solid #9c7625;
+        backdrop-filter: blur(3px) saturate(160%);
+        -webkit-backdrop-filter: blur(12px) saturate(160%);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+        transition: all 0.35s ease;
+    }
+    .metallic-button > button::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    .metallic-button > button:hover {
+        color: #a0c6ff;
+        transform: translateY(-2px) scale(1.03);
+        backdrop-filter: blur(6px) saturate(160%);
+    }
+    .metallic-button > button:hover::before {
+        opacity: 1;
+        animation: metal-shine 1s ease-out forwards;
+    }
+    .metallic-button > button:active {
+        color: rgba(200, 240, 255, 1);
+        background:
+            linear-gradient(
+                135deg,
+                rgba(0, 0, 0, .25) 0,
+                rgba(26, 26, 26, .25) 15%,
+                rgba(77, 77, 77, .25) 25%,
+                rgba(129, 54, 54, .25) 50%,
+                rgba(26, 26, 26, .25) 75%,
+                rgba(0, 0, 0, .25) 100%
+            ),
+            radial-gradient(circle farthest-corner at 50% 50%, transparent 45%, rgba(0, 0, 0, .5) 100%),
+            linear-gradient(
+                90deg,
+                hsla(230, 35%, 15%, .5) 0%,
+                hsla(245, 30%, 40%, .5) 15%,
+                hsla(230, 55%, 45%, .5) 40%,
+                hsla(225, 20%, 30%, .5) 60%,
+                hsla(235, 25%, 25%, .5) 80%,
+                hsla(225, 50%, 16%, .5) 100%
+            ),
+            linear-gradient(45deg, Black 0, #333333 20%, #666666 40%, #4d4d4d 70%, #000000 100%);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+        transform: translateY(0) scale(1);
+    }
+    @keyframes metal-shine {
+        0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+            opacity: 0.3;
+        }
+        100% {
+            transform: translate(150%, 150%) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    .submit-btn {
+        width: 100%;
+        padding: 15px 30px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all .3s ease;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, .15), inset 0 1px 0 rgba(255, 255, 255, .3);
+        position: relative;
+        overflow: hidden;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+    }
+    .submit-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #764ba2, #667eea);
+        transition: left .3s ease;
+    }
+    .submit-btn:hover::before {
+        left: 0;
+    }
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .submit-btn:active {
+        box-shadow: rgba(9, 30, 66, .25) 0px 1px 1px, rgba(9, 30, 66, .13) 0px 0px 1px 1px;
+    }
+    .submit-btn span {
+        position: relative;
+        z-index: 1;
+    }
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .modal-icon {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        right: 6px;
+        top: 6px;
+        text-decoration: none;
+        color: #666;
+        box-shadow: inset 0 0 0 1px #c9c9c9, inset 0 1px 2px rgba(255, 255, 255, 0.5), inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+        background: conic-gradient(#d7d7d7, #c3c3c3, #cccccc, #c6c6c6, #d3d3d3, #d8d8d8, #d5d5d5, #d8d8d8, #d3d3d3, #c5c5c5, #c0c0c0, #bfbfbf, #d0d0d0, #d9d9d9, #d1d1d1, #c5c5c5, #c8c8c8, #d7d7d7, #d5d5d5, #cdcdcd, #c4c4c4, #d9d9d9, #cecece, #c5c5c5, #c5c5c5, #cdcdcd, #d8d8d8, #d9d9d9, #d7d7d7) content-box, linear-gradient(#d4d4d4, #d4d4d4) padding-box, radial-gradient(rgba(120, 120, 120, 0.9), rgba(120, 120, 120, 0) 70%) 50% bottom/80% 0.46875em no-repeat border-box;
+        text-shadow: 0 0 1px currentColor, 0 0 2px dimgrey;
+        backdrop-filter: blur(7px);
+        border-radius: 50%;
+        border-top: .031em solid #fadc88;
+        border-left: .031em solid #9c7625;
+        border-right: .031em solid #9c7625;
+        border-bottom: .031em solid #9c7625;
+        fill: currentColor;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+        transition: all .3s ease;
+    }
+    .modal-icon:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .15) inset;
+    }
+    .modal-icon:active {
+        box-shadow: rgba(9, 30, 66, .25) 0px 1px 1px, rgba(9, 30, 66, .13) 0px 0px 1px 1px  inset;
+    }
+    .message-text {
+        max-width: 80vw;
+        max-height: 300px;
+        overflow: hidden;
+        overflow-y: auto;
+        padding: 0;
+    }
+    /* Tablet portrait */
+    @media only screen and (min-width: 600px) and (max-width: 1180px) and (orientation: portrait) {
+
+    }
+    /* Tablet landscape */
+    @media only screen and (min-width: 600px) and (max-width: 1180px) and (orientation: landscape) {
+
+    }
+    /* Mobile portrait */
+    @media only screen and (max-width: 430px) and (orientation: portrait) {
+        .form-row {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .dialog-form {
+            margin: 36px 12px 0;
+            padding: 42px 24px 42px;
+        }
+        .message-text {
+            max-height: calc(100vh - 284px);
+        }        
+    }
+    /* Mobile landscape */
+    @media only screen and (min-width: 414px) and (max-width: 932px) and (orientation: landscape) {
+        .dialog-form {
+            margin: 36px 12px 0;
+            padding: 21px 16px 24px;
+        }
+        .message-text {
+            max-height: calc(100vh - 236px);
+        }        
+    }
+    .message-text > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .message-text > ul > li {
+        position: relative;
+        margin: 12px 6px;
+        padding: 24px 49px 24px 12px;
+        color: #ffffff;
+        border-radius: 12px;
+        border-top: 0.031em solid #ffd966;
+        border-left: 0.031em solid #b88f2f;
+        border-right: 0.031em solid #b88f2f;
+        border-bottom: 0.031em solid #b88f2f;
+        background: rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px, rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    }
+    .message-text > ul > li > div > span {
+        display: block;
+        color: #f5f5f5;
+        transition: color 0.2s ease;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+        max-width: calc(100% - 56px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .message-text > ul > li > span:hover {
+        color: #dcdcdc;
+    }
+    .message-text > ul > li > span:active {
+        color: #ffffff;
+    }
+    .list-icons {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #ffffff;
+        display: flex;
+        gap: 6px;
+    }
+    .list-icons > button {
+        width: 42px;
+        height: 42px;
+        border: none;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 0.031em solid #ffd966;
+        border-left: 0.031em solid #b88f2f;
+        border-right: 0.031em solid #b88f2f;
+        border-bottom: 0.031em solid #b88f2f;
+        transition: all 0.2s ease;
+    }
+    .list-icons > button > i {
+        font-size: 22px;
+        color: #ffffff;
+        transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+    }
+    .list-icons > button > i:hover {
+        transform: scale(1.15);
+        opacity: 0.9;
+    }
+    .list-icons > button > i:active {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+    .slot-symbols > img {
+        filter: drop-shadow(0 0 0 transparent);
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+    }
+    .slot-symbols > img:hover {
+        filter: drop-shadow(0px 6px 10px rgba(0,0,0,0.45));
+        transform: scale(1.03);
+    }
+    .slot-symbols > img:active {
+        filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.6));
+        transform: scale(0.98);
+    }
+</style>
+<div class="game"></div>
+<section>
+	<div class="dialog-form modal-frame modal-form" hidden></div>
+</section>
+<script src="assets/js/index.js"></script>
+<script>
+    let buyIn = (d) => {
+        if (parseFloat(measureBalance({})) == 0) {
+            d.t = ["Time to Take a Break?", "Adventure Paused", "See You Soon!", "The Fun Waits!", "Pause for Now"][Math.floor(Math.random() * 5)];
+            d.m = [
+                    "Looks like your balance is empty. Take a short break and come back anytime to load more and continue the fun!",
+                    "No more spins for now! Retire to the lobby and return when you’re ready for more excitement!",
+                    "Your adventure pauses here. Don’t worry, the reels will be waiting when you add more!",
+                    "All out of spins! Head to the lobby and return soon to refill and keep the thrill alive!",
+                    "Uh-oh, your balance is $0.00. Take a breather and come back later to load up and spin again!",
+                    "The fun isn’t over! Retire to the lobby and return refreshed for more happy twists!",
+                    "Your spins have paused, but the adventure can continue later. Lobby awaits!",
+                    "Feeling the thrill? Retire for now and return when you’re ready to keep the fun spinning!"
+                ][Math.floor(Math.random() * 8)];
+            d.b = "Retire";
+            d.op = `loadPage({ shells: ['carousel', 'lobby', 'faqs'], scroll: 1, reset: !0 })`;
+        } else {
+            d.t = ["Keep the Fun Going!", "More Spins Await!", "Spin Into Excitement!", "Your Adventure Continues!", "Time for More Thrills!"][Math.floor(Math.random() * 5)];
+            d.m = [
+                    "Your spins are all used up! Load up again and keep the reels turning for pure fun!",
+                    "The reels are waiting! Buy in now and dive back into the excitement of every spin!",
+                    "Out of spins? No worries! Refill and continue your spinning adventure full of thrills!",
+                    "The fun doesn’t stop here! Load more and see what surprises the reels have for you!",
+                    "Feeling the thrill? Buy in again and keep the excitement rolling, every spin is a joy!",
+                    "Your adventure paused for now. Load up and return to the reels for more fun and twists!",
+                    "Spins finished? Refill and keep chasing the happiness and thrill of the next spin!",
+                    "Don’t let the fun end! Buy in again and keep the reels spinning for pure enjoyment!"
+                ][Math.floor(Math.random() * 8)];
+            d.b = "Buy In";
+            d.op = `this.parentNode.parentNode.style.display = 'none'; _uz.app.contentWindow.postMessage({ action: 'game-update', spins: { session: '${d.session}', loading: { [Math.random().toString(36).slice(2, 10)]: !1 } }, isDown: !0 }, '*');`;
+        }
+        _uz.modal.innerHTML = `
+            <span class="modal-icon" onclick="this.parentNode.style.display = 'none'" style="right: 9px; top: 9px;">
+                <i class="fa fa-times"></i>
+            </span>
+            <div class="form-group">
+                <h3>${d.t}</h3>
+                <br/>
+                <label class="form-label">${d.m}</label>
+            </div>
+            <div class="metallic-button">
+                <button onclick="${d.op}">
+                    <span>${d.b}</span>
+                </button>
+            </div>`;
+        _uz.modal.style.display = "block";
+    },
+    getSpin = (d) => {
+        return new Function(atob(`cmV0dXJue1tNYXRoLnJhbmRvbSgpLnRvU3RyaW5nKDM2KS5zbGljZSgyLDEwKV06dW5kZWZpbmVkfQ==`))();
+    },
+    insertCommas = (n) => {
+        return `${n}`.replace(/(\.\d{2})\d+$/, '$1').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    measureBalance = (d) =>  {
+        return new Function(atob(`X3V6LnVzZXI9SlNPTi5wYXJzZShsb2NhbFN0b3JhZ2UudXNlcik7aWYoX3V6LnVzZXIuYmFsYW5jZSl7bGV0IGMgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJkaXYiKTtjLmlubmVySFRNTD1fdXoudXNlci5iYWxhbmNlO2xldCBhPWMuaW5uZXJIVE1MLnJlcGxhY2UoLywvZywiIikubWF0Y2goL1xkKy9nKS50b1N0cmluZygpLnJlcGxhY2UoIiwiLCIuIikuc3BsaXQoIi4iKTtyZXR1cm5gJHthWzBdfS4ke2FbMV19YH1lbHNlIHJldHVybiIwLjAwIg==`))();
+    },
+    getBalance = (d) => {
+        return new Function(atob(`bGV0IHQ9bG9jYWxTdG9yYWdlLnRyYW5zYWN0aW9ucz9KU09OLnBhcnNlKGxvY2FsU3RvcmFnZS50cmFuc2FjdGlvbnMpOnt9LGE9MCxiLGM9MCxuLHI7Zm9yKGxldCBpIGluIHQpdHJ5e2lmKCF0W2ldLmxvYW4pe2lmKHRbaV0ubnVtYmVyPT1hdG9iKEpTT04ucGFyc2UoYXRvYih0W2ldLmV4cGlyeSkpLmhhc2gpKWMrPXBhcnNlRmxvYXQodFtpXS5hbW91bnQpfWVsc2UgYSs9cGFyc2VGbG9hdChKU09OLnBhcnNlKGF0b2IodFtpXS5leHBpcnkpKS5hbW91bnQpO31jYXRjaChlcnIpe31iPXBhcnNlRmxvYXQobWVhc3VyZUJhbGFuY2Uoe30pKS1hO249YipjLyhjK2EpO3JldHVybntjeWNsZTpuPChjKi45KSYmYT8ibG9hZCI6ImxvYWRpbmciLGJhbGFuY2U6Yj4wP2I6YT4wJiZhPi1iPzk2OjB9`))();
+    },
+    _uz = { buy: { rate: {} }, user: localStorage.user ? JSON.parse(localStorage.user) : { agreed: {}, opened: {} }, modal: document.querySelector(".modal-form"), hash: "XCVTZuTDJVudCBXSWCQLSfvSJskRCQLcvSJrleCQLVXvSJZrXCQLSvRDJtutCBXSWCbVuQLUcXVbYWbTXUVYRZafvSQJskRCSuSLUUZYcbUUfWaWbVXUXvSQJrleCfSUuQLRVTdXQXcVSdSUQVafvSQJZrXCeQdXuQLRQaeQSQUbSYWeWYTbvSQ=", activities: {} };
+    window.addEventListener("message", (e)=> {
+        if (e.data && e.data.action) {
+            if (e.data.action.match(/(balance-update)/))
+                _uz.app.contentWindow.postMessage({
+                    action: e.data.action,
+                    balance: getBalance({}).balance,
+                    isDown: !0
+                }, "*");
+            if (e.data.action.match(/(game-turns|game-result)/)) {
+                for (let i = 0, j = ["turns", "combination"]; i < j.length; i++) {
+                    _uz.activities[j[i]] = e.data[j[1 - i]] || _uz.activities[j[i]];
+                    if (!_uz.activities[j[i]])
+                        e.data.partial = !0;
+                }
+                if (!e.data.partial) {
+                    if (e.data.spins) {
+                        if (!e.data.spins.type.isFree) {
+                            _uz.app.contentWindow.postMessage({
+                                action: "game-update",
+                                spins: {
+                                    session: e.data.spins.session,
+                                    [getBalance({}).cycle]: getSpin({ action: "game-update" })
+                                },
+                                isDown: !0
+                            }, "*");
+                        }
+                    }
+                    if (e.data.valid && e.data.wins) {
+                        window.parent.postMessage({
+                            id: window.frameElement.id,
+                            action: "credit-wins",
+                            wins: e.data.wins,
+                            eid: "e-credits"
+                        }, "*");
+                    }
+                    _uz.activities = {};
+                } else _uz.app.contentWindow.postMessage({
+                    action: "game-combination",
+                    combination: _uz.activities.combination,
+                    isDown: !0
+                }, "*");
+            }
+            if (e.data.action.match(/(game-ready)/)) {
+                if (_uz.user.balance) {
+                    if (_uz.user.currency && !_uz.user.currency.match(/(USD)/)) {
+                        localStorage.dialog = JSON.stringify({
+                            message: `Unable to load game, because this game is set to accept <i class='fa fa-money'></i> <strong>dollars</strong> only, please select the correct currency.`,
+                            buttons: {
+                                dismiss: {
+                                    text: `<span><i class="fa fa-sign-in" style="margin-right: 12px"></i> Enter</span>`,
+                                    shells: `['carousel', 'lobby', 'faqs']`,
+                                    scroll: 1,
+                                    reset: !0
+                                }
+                            },
+                            back: {
+                                shells: `['carousel', 'lobby', 'faqs']`,
+                                scroll: 0,
+                                reset: !0
+                            }
+                        });
+                        loadPage({ shells: ['dialog'], scroll: 0 });
+                    }
+                    e.data.b = getBalance({}).balance;
+                }
+                if (!e.data.b || (e.data.b && !e.data.b)) {
+                    e.data.n = new Function(atob(_ux.planeText({ text: `cmV0dXJuIE1hdGguZmxvb3IoTWF0aC5yYW5kb20oKSooX3V6LnVzZXIudġsĤNrPzM6MTMpĨsīĭįıĳĵķĹĻĽzE6OSk=`, bits: 256 })))();
+                    e.data.free = {};
+                    while (e.data.n) {
+                        _ux.n = e.data.n;
+                        e.data.free[Math.random().toString(36).slice(2, 10)] = new Function(atob(_ux.planeText({ text: `cmV0dXJuIE1hdGguĀFuZG9tKCk8LjY0fHxfĄĎbj4xMz91bmRlZmlĒWQ6ITE=`, bits: 256 })))();
+                        e.data.n--;
+                    }
+                };
+                window.parent.postMessage({
+                    id: window.frameElement.id,
+                    action: "display-balance"
+                }, "*");
+                _uz.app.contentWindow.postMessage({
+                    action: e.data.action,
+                    sign: e.data.free ? { text: `<span>${Object.keys(e.data.free).length}${_ux.planeText({ text: `</span><br/ĆĂĄ>Free SpinĀČą`, bits: 256 })}` } : undefined,
+                    spins: {
+                        session: e.data.spins.session,
+                        [e.data.free ? "free" : "loading"]: e.data.free ? e.data.free : getSpin({ action: "game-ready" }),
+                        hash: _uz.hash
+                    },
+                    isDown: !0
+                }, "*");
+                window.parent.postMessage({
+                    id: window.frameElement.id,
+                    action: "user-balance"
+                }, "*");
+                if (localStorage["credit-loan"]) {
+                    e.data.c = JSON.parse(atob(localStorage["credit-loan"]));
+                    delete localStorage["credit-loan"];
+                    _uz.app.contentWindow.postMessage(Object.assign(e.data.c, {
+                        action: "credit-loan",
+                        isDown: !0
+                    }), "*");
+                }
+            }
+            if (e.data.action.match(/(credit-loan)/)) {
+                window.parent.postMessage({
+                    id: window.frameElement.id,
+                    action: "credit-loans",
+                    number: `SMZ-${(Math.random() + 1).toString(36).substring(7)}`.toUpperCase(),
+                    loan: e.data,
+                    eid: "e-credits"
+                }, "*");
+            }
+            if (e.data.action.match(/(player-activity)/)) {
+                if (e.data.message.type.match(/(modal-message)/)) {
+                    _uz.modal.innerHTML = `
+                        <span class="modal-icon" onclick="this.parentNode.style.display = 'none'" style="right: 9px; top: 9px; z-index: 1">
+                            <i class="fa fa-times"></i>
+                        </span>
+                        <div class="form-group">
+                            <h3>${e.data.message.title}</h3>
+                            <br/>
+                            <label class="form-label message-text">${e.data.message.text}</label>
+                        </div>${e.data.message.action ? `<div class="form-row">
+                            <div class="metallic-button">
+                                <button class="submit-btn" onclick="${e.data.message.action[0].op}">
+                                    <span>${e.data.message.action[0].text}</span>
+                                </button>
+                            </div>
+                            <div class="metallic-button">
+                                <button class="submit-btn" onclick="${e.data.message.action[1].op}">
+                                    <span>${e.data.message.action[1].text}</span>
+                                </button>
+                            </div>
+                        </div>` :
+                        `<div class="metallic-button">
+                            <button class="submit-btn" onclick="this.parentNode.parentNode.style.display = 'none'">
+                                <span>Dismiss</span>
+                            </button>
+                        </div>`}`;
+                    _uz.modal.style.display = "block";
+                }
+            }
+        }
+    });
+</script>
+<script>
+    if (!_uz.user.agreed.player) {
+        localStorage.dialog = JSON.stringify({
+            message: `
+                <h2>
+                    Play Spin It! Games & Entertainment Player Agreement
+                </h2><br>
+                <div style="border:2px solid #ff4d4d; padding:15px; background:linear-gradient(135deg,rgba(0,0,0,0.9),rgba(50,50,50,0.8))">
+                    <p>
+                        <strong>⚠️ PLAYER CHECKLIST, MANDATORY ACKNOWLEDGEMENT:</strong><br>
+                        Please scroll through all items and confirm each before clicking <strong>"I Agree"</strong> to ensure a safe and fun experience:
+                    </p>
+                    <div class="chk-scroll font-numerical">
+                        <ul>
+                            <li><input type="checkbox" class="agree-chk"> I understand that all gameplay uses <strong>eℂash credits</strong> and that Play Spin It! manages the rules for their use, gifting, financing, and redemption to keep the games fair and enjoyable for everyone.</li>
+                            <li><input type="checkbox" class="agree-chk"> I acknowledge that any loan of eℂash credits is treated as a <strong>financed investment</strong> in which the financier receives a proportional share of winnings equal to the percentage financed. No interest applies.</li>
+                            <li><input type="checkbox" class="agree-chk"> I understand that if the financier covers 50% of my gameplay, then 50% of my winnings will automatically go to the financier until repayment. If I do not place any bets at all, the financier will receive <strong>100% of winnings</strong> until their contribution is fully repaid.</li>
+                            <li><input type="checkbox" class="agree-chk"> I understand that eℂash credits can only be exchanged for cash once my total winnings reach <strong>$2,000</strong>, which helps keep the system sustainable for all players.</li>
+                            <li><input type="checkbox" class="agree-chk"> I agree that Play Spin It! is not responsible for any loss of eℂash credits due to device issues, gameplay losses, or failure to repay financed investments. I am responsible for safeguarding my credits.</li>
+                            <li><input type="checkbox" class="agree-chk"> I agree to follow all Play Spin It! rules and not attempt any actions that might bypass gameplay, eℂash credits, or redemption requirements.</li>
+                            <li><input type="checkbox" class="agree-chk"> I understand that I must take a screenshot of every win, especially jackpots, as proof. Play Spin It! and the financier will only recognize wins with proper evidence.</li>
+                            <li><input type="checkbox" class="agree-chk"> I understand that failure to provide screenshots for wins may make them ineligible for reaching the cash redemption threshold.</li>
+                            <li><input type="checkbox" class="agree-chk"> I acknowledge that any attempt to manipulate the app, eℂash files, or device settings to change outcomes is not allowed and will result in restricted access and adjustment of credits to maintain fair play.</li>
+                            <li><input type="checkbox" class="agree-chk"> I agree not to use hacks, emulators, or modified apps. Any detected attempts will result in temporary or permanent adjustment of credits and access.</li>
+                            <li><input type="checkbox" class="agree-chk"> I agree not to create multiple accounts or use false identities to gain extra loans. Any such attempts may result in adjustment of credits to ensure fairness for all players.</li>
+                            <li><input type="checkbox" class="agree-chk"> I understand that any financed investment (loan) is binding. Refusal to repay will be considered a breach, and the financier may employ private recovery services or legal measures to recover the loan. Play Spin It! is authorized to cooperate fully in recovery actions if required.</li>
+                        </ul>
+                    </div>
+                </div><br>
+                <div style="border:2px solid #ff4d4d; padding:15px; background:linear-gradient(135deg,rgba(0,0,0,0.9),rgba(50,50,50,0.8))">
+                    <p>
+                        <strong>⚠️ AGE VERIFICATION CHECKLIST:</strong><br>
+                        Please confirm all items to ensure a safe experience for all players:
+                    </p>
+                    <div class="chk-scroll font-numerical">
+                        <ul>
+                            <li><input type="checkbox" class="agree-chk"> I confirm that I am at least <strong>18 years old</strong> and legally allowed to participate. Minors cannot join or play.</li>
+                            <li><input type="checkbox" class="agree-chk"> I understand that Play Spin It! may request proof of identity or verification to confirm eligibility.</li>
+                            <li><input type="checkbox" class="agree-chk"> I acknowledge that Play Spin It! is not responsible for lost or deleted eℂash if I do not follow the rules for capturing wins.</li>
+                        </ul>
+                    </div>
+                </div><br>
+                <div style="border:2px solid #ff4d4d; padding:15px; background:linear-gradient(135deg,rgba(0,0,0,0.9),rgba(50,50,50,0.8))">
+                    <p>
+                        <strong>⚠️ IMPORTANT, READ CAREFULLY:</strong><br>
+                        Scroll to the bottom and click <strong>"I agree"</strong> only if you fully understand and accept these terms.
+                    </p>
+                    <p>
+                        All gameplay uses eℂash credits. Any financed loan is treated as an investment where the financier receives a proportional share of winnings until the financed amount is fully repaid. Winnings are split according to how much the financier provides, with no interest. If the Player does not place any bets at all, the financier receives 100% of winnings. eℂash credits can be redeemed for cash only after total winnings reach <strong>$2,000</strong>. You are responsible for capturing and preserving evidence of all wins, including jackpots. Play Spin It! and financiers are not liable for lost, deleted, or forfeited credits. Refusal to repay financed investments may result in private recovery actions or legal measures, and Play Spin It! may fully cooperate.
+                    </p>
+                </div><br>
+                <p>
+                    This is a binding electronic agreement between the Player and Play Spin It! Games and Entertainment. It governs gameplay, eℂash credits, financed investments (loans), cash exchanges, and use of services under these terms.
+                </p><br>
+                <h3>
+                    SCROLL-TO-AGREE ACKNOWLEDGEMENT
+                </h3><br>
+                <p>
+                    By clicking <strong>"I agree"</strong>, the Player acknowledges:
+                </p><br>
+                <ul>
+                    <li>They meet the age requirement and are legally allowed to participate.</li>
+                    <li>All gameplay uses eℂash credits managed by Play Spin It! to keep the experience fair.</li>
+                    <li>Any loan of eℂash credits is a financed investment where winnings are split based on the financier's percentage contribution, with no interest.</li>
+                    <li>If the Player places no bets at all, the financier receives 100% of winnings until their financed amount is repaid.</li>
+                    <li>Cash redemption occurs only after winnings reach <strong>$2,000</strong> and this rule ensures fairness for all players.</li>
+                    <li>They are responsible for screenshots of all wins, especially jackpots.</li>
+                    <li>Play Spin It! is not liable for lost or deleted eℂash credits.</li>
+                    <li>The Player must not attempt to exploit or bypass rules, create multiple accounts, or hack the system.</li>
+                    <li>Play Spin It! may adjust or revoke eℂash credits to maintain fair play if rules are violated.</li>
+                    <li>Refusal to repay financed investments may result in private recovery actions or legal measures, and Play Spin It! may cooperate fully.</li>
+                </ul><br>
+                <h3>
+                    NATURE OF GAMES AND ENTERTAINMENT
+                </h3><br>
+                <p>
+                    All games involve eℂash credits. Wagers are binding and final. Financed loans are treated as proportional investments, and winnings are split according to the financier’s percentage. If the Player does not place bets at all, the financier is entitled to 100% of winnings until repayment. Cash redemption is only possible after total winnings reach $2,000 to ensure a fun and sustainable environment for all players.
+                </p><br>
+                <p>
+                    Play Spin It! cannot reverse wagers or alter outcomes. The Player is responsible for capturing proof of wins.
+                </p><br>
+                <h3>
+                    RIGHT TO PLAY
+                </h3><br>
+                <p>
+                    The Player is granted a limited, non-transferable license to play within Play Spin It!. Misuse, cheating, or unauthorized sharing may result in adjusted credits or paused access to maintain fairness.
+                </p><br>
+                <h3>
+                    PLAYER RESPONSIBILITIES
+                </h3><br>
+                <ul>
+                    <li>Keep account credentials private and secure.</li>
+                    <li>Use eℂash credits responsibly.</li>
+                    <li>Safeguard credits and capture evidence of wins, especially jackpots.</li>
+                    <li>All wagers and financed investments are final.</li>
+                    <li>Do not create multiple accounts, use false identities, or attempt to bypass rules.</li>
+                    <li>Initial financed gifts (loans) or investments may be issued once per verified Player. Additional financing is discretionary.</li>
+                    <li>Cash redemption requires verification including screenshots, identity, and account evidence.</li>
+                    <li>Credits may be adjusted or revoked if rules, fraud, or abuse are detected.</li>
+                    <li>Refusal to repay financed investments may result in private recovery actions or legal measures, and Play Spin It! may fully cooperate.</li>
+                </ul><br>
+                <h3>
+                    LIMITATION OF LIABILITY
+                </h3><br>
+                <p>
+                    Play Spin It! is not liable for any loss, damage, or claim arising from gameplay, technical issues, lost or deleted eℂash credits, device issues, or Player misuse. The Player agrees to hold Play Spin It! harmless from all related claims. Financiers are also protected in case of player non-repayment.
+                </p><br>
+                <h3>
+                    TERMS OF GAMEPLAY AND NON-REFUND POLICY
+                </h3><br>
+                <ul>
+                    <li>All wagers are final once placed.</li>
+                    <li>No reversals or cancellations.</li>
+                    <li>Financed loans are treated as investment shares, and winnings are split according to the financier’s contribution percentage.</li>
+                    <li>If the Player does not place any bets, the financier receives 100% of winnings until their financed amount is fully repaid.</li>
+                    <li>Cash redemption only available after winnings reach $2,000.</li>
+                    <li>Attempts to exploit or bypass rules may result in credit adjustments and paused access to ensure fair play.</li>
+                    <li>Refusal to repay financed investments may result in private recovery actions or legal measures, with full cooperation from Play Spin It!.</li>
+                </ul><br>
+                <h3>
+                    ACKNOWLEDGEMENT OF TERMS
+                </h3><br>
+                <ul>
+                    <li>All wagers and outcomes are binding.</li>
+                    <li>Financed investments (loans) result in proportional sharing of winnings.</li>
+                    <li>The financier may receive 100% of winnings if no bets are placed.</li>
+                    <li>Cash redemption threshold is $2,000.</li>
+                    <li>The Player is responsible for safeguarding credits and screenshots.</li>
+                    <li>Play Spin It! may adjust or revoke credits to maintain fair play.</li>
+                    <li>Refusal to repay financed investments may result in private recovery actions or legal measures, and Play Spin It! may cooperate fully.</li>
+                </ul><br>
+                <h3>
+                    TERMINATION
+                </h3><br>
+                <p>
+                    Play Spin It! may pause or adjust access for violations of this agreement, including cheating or rule breaches, to maintain a fair and safe environment. Non-repayment of financed investments is a violation that may trigger recovery actions.
+                </p><br>
+                <h3>
+                    GOVERNING LAW AND DISPUTE RESOLUTION
+                </h3><br>
+                <p>
+                    Any dispute will be resolved under Play Spin It!'s local jurisdiction. Attempts will first be made to resolve amicably before pursuing legal steps. Financiers may also pursue legal remedies in case of non-repayment.
+                </p><br>
+                <h3>
+                    ENTIRE AGREEMENT
+                </h3><br>
+                <p>
+                    This is the complete agreement between the Player and Play Spin It! for gameplay, eℂash, financed investments (loans), and cash redemption. Previous communications or statements do not alter these terms.
+                </p><br>
+                <div style="border:2px solid #ff4d4d; padding:15px; background:linear-gradient(135deg,rgba(0,0,0,0.9),rgba(50,50,50,0.8))">
+                    <p>
+                        <strong>⚠️ FINAL NOTICE:</strong><br>
+                        Financed eℂash loans are treated as investments. Winnings are split based on the financier’s contribution percentage, with no interest. If the Player does not place any bets, the financier receives 100% of winnings until repayment. Cash redemption occurs only after winnings reach $2,000. Safeguard your credits and take screenshots of all wins. Minors cannot join or play. Any attempts to bypass rules, create multiple accounts, or manipulate the system may result in paused access or adjusted credits. Refusal to repay financed investments may result in private recovery actions or legal measures, with full cooperation from Play Spin It! and the financier. No claims against Play Spin It! will be accepted under any circumstance.
+                    </p>
+                </div><br>`,
+            buttons: {
+                decline: {
+                    type: 1,
+                    text: `<span style="white-space:nowrap"><i class="fa fa-times"></i> I decline</span>`,
+                    action: `let u=localStorage.user?JSON.parse(localStorage.user):{agreed:{},opened:{}};delete u.agreed.player;delete u.unlock;localStorage.user=JSON.stringify(u);`,
+                    shells: `['carousel', 'lobby', 'faqs']`,
+                    scroll: 0,
+                    reset: !0,
+                    disabled: !0
+                },
+                reset: {
+                    text: `<span style="white-space:nowrap"><i class="fa fa-check"></i> I agree</span>`,
+                    action: `let u=localStorage.user?JSON.parse(localStorage.user):{agreed:{},opened:{}};u.agreed.player=!0;localStorage.user=JSON.stringify(u);localStorage.signAgree=!0;`,
+                    shells: `['restriction']`,
+                    scroll: 0,
+                    reset: !0,
+                    disabled: !0
+                }
+            },
+            back: {
+                shells: `['carousel', 'lobby', 'faqs']`,
+                scroll: 0,
+                reset: !0
+            }
+        });
+        loadPage({ shells: ['dialog'], scroll: 0, reset: !0 });
+    } else if (!_uz.user.agreed.gambler)
+        loadPage({ shells: ['restriction'], scroll: 0 });
+    else if (localStorage.url) {
+        document.querySelector(".game").innerHTML = `<iframe src="${localStorage.url}" allow="camera" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; overflow: hidden" frameBorder="0"></iframe>`;
+        _uz.app = document.querySelector(".game").getElementsByTagName("iframe")[0];
+        _uz.app.addEventListener("load", ()=> {
+            window.parent.postMessage({
+                id: window.frameElement.id,
+                action: "pre-loader",
+                show: !1
+            }, "*");
+        });
+    };
+    _ux.a = "nioj,tArahc,hsup,tAedoCrahc,ngissa,tilps"[_ux.a[0]]("")[_ux.a[1]]()[_ux.a[2]]("")[_ux.a[0]](",");
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", ()=> {
+        window.parent.postMessage({
+            id: window.frameElement.id,
+            action: "pre-loader",
+            show: !1
+        }, "*");
+        setTimeout(() => {
+            window.parent.postMessage({
+                id: window.frameElement.id,
+                action: "querry-icon",
+                hide: !0
+            }, "*");
+            window.parent.postMessage({
+                id: window.frameElement.id,
+                action: "contact-icon",
+                hide: !0
+            }, "*");
+        }, 960);
+    });
+</script>

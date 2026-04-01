@@ -1,0 +1,2378 @@
+<meta name="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, user-scalable = 0, viewport-fit = cover, shrink-to-fit = no">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<link rel="stylesheet" href="assets/css/metallicgold.css" />
+<style>
+    .colorRayContainer {
+        position: relative;
+        width: 100%;
+        max-width: 38%;
+        height: 100%;
+        padding: 0;
+        margin: 0 auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -51%;
+        transform: scalex(4) scaleY(1.2);
+        overflow: hidden;
+        z-index: -1;
+        opacity: .64;
+    }
+    .lightTheme .colorRayContainer {
+        mix-blend-mode: darken;
+    }
+    .lightRays {
+        --a: rgba(3, 10, 0, 0.1);
+        --b: rgba(3, 10, 0, 1);
+        --c: rgba(3, 10, 0, 0.5);
+        --d: rgba(3, 10, 0, 0.68);
+        
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(rgba(255, 255, 255, .6), rgba(0, 0, 0, .7));
+        overflow: hidden;
+        
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, .7) 5%, rgba(0, 0, 0, .5) 10%, rgba(0, 0, 0, .3) 22%, rgba(0, 0, 0, .15) 35%, transparent 50%);
+        mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, .7) 5%, rgba(0, 0, 0, .5) 10%, rgba(0, 0, 0, .3) 22%, rgba(0, 0, 0, .15) 35%, transparent 50%);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        
+        mix-blend-mode: color-burn;
+        opacity: 0.6;
+    }
+    .lightRays:before,
+    .lightRays:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -100vmax;
+        width: 200vmax;
+        height: 200vmax;
+        opacity: 0.45;        
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, .7) 5%, rgba(0, 0, 0, .5) 10%, rgba(0, 0, 0, .3) 22%, rgba(0, 0, 0, .15) 35%, transparent 50%);
+        mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, .7) 5%, rgba(0, 0, 0, .5) 10%, rgba(0, 0, 0, .3) 22%, rgba(0, 0, 0, .15) 35%, transparent 50%);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+    }
+    .lightRays:before {
+        background: conic-gradient(
+            from 20deg at 50% 50%,
+            var(--a), transparent,
+            var(--b), transparent,
+            var(--c), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--d), transparent,
+            var(--b), transparent,
+            var(--c), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--b), transparent,
+            var(--a)
+        ),
+        conic-gradient(
+            from 30deg at 50% 50%,
+            var(--a), transparent,
+            var(--b), transparent,
+            var(--c), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--d), transparent,
+            var(--b), transparent,
+            var(--c), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--b), transparent,
+            var(--a)
+        ),
+        conic-gradient(
+            from 40deg at 50% 50%,
+            var(--a), transparent,
+            var(--b), transparent,
+            var(--c), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--d), transparent,
+            var(--b), transparent,
+            var(--c), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--b), transparent,
+            var(--a)
+        );
+        animation: rotateRays 10s infinite;
+        background-blend-mode: exclusion, hard-light, overlay;
+        mix-blend-mode: hard-light;
+    }
+    .lightRays:after {
+        background: conic-gradient(
+            from 0deg at 50% 50%,
+            var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--b), var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--b), var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--c)
+        ),
+        conic-gradient(
+            from 30deg at 50% 50%,
+            var(--a), transparent,
+            var(--b), transparent,
+            var(--c), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--d), transparent,
+            var(--b), transparent,
+            var(--c), transparent,
+            var(--d), transparent,
+            var(--a), transparent,
+            var(--b), transparent,
+            var(--a)
+        ),
+        conic-gradient(
+            from -20deg at 50% 50%,
+            var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--b), var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--b), var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--c)
+        ),
+        conic-gradient(
+            from -35deg at 50% 50%,
+            var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--b), var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--b), var(--c), transparent,
+            var(--c), var(--a), transparent,
+            var(--c)
+        );
+        animation: rotateRays 6s 10s infinite reverse;
+        background-blend-mode: exclusion, exclusion, difference, exclusion;
+        mix-blend-mode: color-burn;
+    }
+    @keyframes rotateRays {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+    .colorRays {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: all 300ms ease;
+        mix-blend-mode: hard-light;
+        opacity: 0.7;
+        -webkit-filter: blur(3px) saturate(180%);
+        filter: blur(3px) saturate(180%);
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 6%, rgba(0, 0, 0, .7) 11%, rgba(0, 0, 0, .5) 18%, rgba(0, 0, 0, .3) 26%, rgba(0, 0, 0, .15) 35%, transparent 70%);
+        mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 6%, rgba(0, 0, 0, .7) 11%, rgba(0, 0, 0, .5) 18%, rgba(0, 0, 0, .3) 26%, rgba(0, 0, 0, .15) 35%, transparent 70%);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+    }
+    .lightTheme .colorRays {
+        mix-blend-mode: hard-light;
+    }
+    .colorRays:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background:
+        conic-gradient(
+            from 90deg at 50% 50%,
+            rgba(169, 73, 207, 1), /* purple */
+            rgba(238, 248, 86, 1), /* yellow */
+            rgba(248, 72, 202, 1), /* pink */
+            rgba(119, 235, 195, 1), /* teal */
+            rgba(77, 71, 214, 1), /* blue */
+            rgba(169, 73, 207, 1)
+        );
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, .9) 5%, rgba(0, 0, 0, .7) 13%, rgba(0, 0, 0, .5) 22%, rgba(0, 0, 0, .3) 29%, rgba(0, 0, 0, .15) 37%, transparent 46%);
+        mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, .9) 5%, rgba(0, 0, 0, .7) 13%, rgba(0, 0, 0, .5) 22%, rgba(0, 0, 0, .3) 29%, rgba(0, 0, 0, .15) 37%, transparent 46%);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-filter: blur(27px);
+        filter: blur(27px);
+        mix-blend-mode: color-dodge;
+        animation: rotateColors 5.5s linear infinite, rotateColorsReverse 8s linear infinite reverse;
+    }
+    .lightTheme .colorRays:before {
+        mix-blend-mode: overlay;
+    }
+    .colorRays:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: -1.5%;
+        left: 0;
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, .9) 9%, rgba(0, 0, 0, .7) 17%, rgba(0, 0, 0, .5) 25%, rgba(0, 0, 0, .3) 33%, rgba(0, 0, 0, .15) 41%, transparent 50%);
+        mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, .9) 9%, rgba(0, 0, 0, .7) 17%, rgba(0, 0, 0, .5) 25%, rgba(0, 0, 0, .3) 33%, rgba(0, 0, 0, .15) 41%, transparent 50%);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-filter: blur(1px);
+        filter: blur(1px);
+        mix-blend-mode: saturation;
+        mix-blend-mode: multiply;
+        animation: rotateColorsReverse 80s linear infinite;
+    }
+    .lightTheme .colorRays:after {
+        mix-blend-mode: hard-light;
+    }
+    @keyframes rotateColors {
+        0% {
+            filter: hue-rotate(0) blur(30px);
+        }
+        100% {
+            filter: hue-rotate(360deg) blur(30px);
+        }
+    }
+    @keyframes rotateColorsReverse {
+        0% {
+            transform: rotate(360deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+	@keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .card-cont {
+        inline-size: 100dvw;
+        block-size: 100dvh;
+        overflow: hidden;
+        -moz-image-rendering: auto;
+        -ms-image-rendering: auto;
+        -o-image-rendering: auto;
+        image-rendering: auto;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        animation: fadeIn 1000ms ease;
+        -webkit-animation: fadeIn 1000ms ease;
+        & .hand {
+            inline-size: 100%;
+            block-size: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            -webkit-animation: opening 1.2s ease-in;
+            animation: opening 1.2s ease-in;
+            & .hand__curtain {
+                inline-size: 100%;
+                block-size: 100%;
+                display: none;
+                position: absolute;
+                z-index: 2;
+                &.curtain--visible {
+                    display: block;
+                    animation: curtain-up 0.6s ease-out forwards;
+                }
+            }
+            & section {
+                inline-size: 46dvmin;
+                aspect-ratio: 5 / 7;
+                overflow: hidden;
+                box-shadow:
+                    inset 0dvmin 0dvmin 0dvmin 0.1dvmin var(--system-color-card-border),
+                    0dvmin 0.8dvmin 3.2dvmin var(--system-color-card-shadow),
+                    0dvmin 1.6dvmin 6.4dvmin var(--system-color-card-shadow);
+                transition:
+                    transform 0.6s ease-out,
+                    filter 0.6s ease-out;
+                cursor: url("assets/images/pointer_hand.png"), pointer;
+                & article {
+                    inline-size: 90%;
+                    block-size: 65%;
+                    position: absolute;
+                    inset: 5% auto auto 5%;
+                    box-shadow: inset 0dvmin 0dvmin 12dvmin -6dvmin var(--system-color-dark);
+                    &::before {
+                        inline-size: 110%;
+                        block-size: 35%;
+                        content: "";
+                        position: absolute;
+                        z-index: 5;
+                        inset: 70% auto auto -5%;
+                        -webkit-filter: drop-shadow(0dvmin 2dvmin 2dvmin var(--system-color-shadow));
+                        filter: drop-shadow(0dvmin 2dvmin 2dvmin var(--system-color-shadow));
+                    }
+                }
+                & aside {
+                    inline-size: 90%;
+                    block-size: 35%;
+                    position: absolute;
+                    z-index: 4;
+                    inset: auto auto 5% 5%;
+                    background: var(--system-color-label);
+                    box-shadow: inset 0dvmin 0dvmin 12dvmin -6dvmin var(--system-color-dark);
+                }
+                &.card-clone {
+                    display: none;
+                    &.card--visible {
+                        display: block;
+                        position: absolute;
+                        z-index: 3;
+                        -webkit-animation: card-zoom 0.6s ease-in forwards;
+                        animation: card-zoom 0.6s ease-in forwards;
+                    }
+                }
+                &.card--hidden {
+                    animation: vanish-from-the-board 0.6s ease-out forwards;
+                }
+                :is(&.card-frame:nth-child(1), &.card-frame-clone:nth-child(1)) {
+                    -webkit-transform: translateX(35%) translateY(0%) rotate(-7deg);
+                    transform: translateX(35%) translateY(0%) rotate(-7deg);
+                }
+                :is(&.card-frame:nth-child(2), &.card-frame-clone:nth-child(2)) {
+                    -webkit-transform: translateY(-5%);
+                    transform: translateY(-5%);
+                }
+                :is(&.card-frame:nth-child(3), &.card-frame-clone:nth-child(3)) {
+                    -webkit-transform: translateX(-35%) translateY(0%) rotate(7deg);
+                    transform: translateX(-35%) translateY(0%) rotate(7deg);
+                }
+            }
+        }
+    }
+    @keyframes opening {
+        from {
+            opacity: 0;
+            filter: grayscale(100%);
+        }
+        to {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+    }
+    @keyframes curtain-up {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 0.95;
+        }
+    }
+    @keyframes card-zoom {
+        from {
+            opacity: 0;
+            transform: scale(1);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1.45);
+        }
+    }
+    @keyframes vanish-from-the-board {
+        to {
+            opacity: 0;
+        }
+    }
+    @media screen and (prefers-reduced-motion: reduce) {
+        * {
+            transition: none !important;
+            animation: none !important;
+            scroll-behavior: auto !important;
+        }
+    }
+    @media (hover: hover) {
+        body {
+            & .hand {
+                &:has(.card-origin:hover) section:not(:hover) {
+                    -webkit-filter: grayscale(95%);
+                    filter: grayscale(95%);
+                }
+                &:has(.card-origin:hover) .card-frame:nth-child(1):not(:hover) {
+                    -webkit-transform: translateX(35%) translateY(8%) rotate(-7deg);
+                    transform: translateX(35%) translateY(8%) rotate(-7deg);
+                }
+                & .card-frame:nth-child(1):hover {
+                    -webkit-transform: translateX(25%) translateY(-5%) rotate(-7deg);
+                    transform: translateX(25%) translateY(-5%) rotate(-7deg);
+                }
+                &:has(.card-origin:hover) .card-frame:nth-child(2):not(:hover) {
+                    -webkit-transform: translateX(0%) translateY(3%) rotate(0deg);
+                    transform: translateX(0%) translateY(3%) rotate(0deg);
+                }
+                & .card-frame:nth-child(2):hover {
+                    -webkit-transform: translateX(-10%) translateY(-10%) rotate(0deg);
+                    transform: translateX(-10%) translateY(-10%) rotate(0deg);
+                }
+                &:has(.card-origin:hover) .card-frame:nth-child(3):not(:hover) {
+                    -webkit-transform: translateX(-35%) translateY(8%) rotate(7deg);
+                    transform: translateX(-35%) translateY(8%) rotate(7deg);
+                }
+                & .card-frame:nth-child(3):hover {
+                    -webkit-transform: translateX(-45%) translateY(-5%) rotate(7deg);
+                    transform: translateX(-45%) translateY(-5%) rotate(7deg);
+                }
+            }
+        }
+    }
+    .modal-card {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding-bottom: 150%;
+        perspective: 1000px;
+    }
+    .modal-card__cover {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        perspective-origin: 50% 50%;
+        transform-style: preserve-3d;
+        transform-origin: top center;
+        will-change: transform;
+        transform: skewX(0.001deg);
+        transition: transform 0.35s ease-in-out;
+        border-radius: calc(3vmin - 4px);
+    }
+    .modal-card__cover::after {
+        display: block;
+        content: "";
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        background: linear-gradient(
+            226deg,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.4) 35%,
+            rgba(255, 255, 255, 0.2) 42%,
+            rgba(255, 255, 255, 0) 60%
+        );
+        transform: translateY(-20%);
+        will-change: transform;
+        transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+    }
+    .modal-card:hover ::after {
+        transform: translateY(0%);
+    }
+    .modal-card::before {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        width: 90%;
+        height: 90%;
+        background: rgba(0, 0, 0, 0.5);
+        box-shadow: 0 6px 12px 12px rgba(0, 0, 0, 0.4);
+        will-change: opacity;
+        transform-origin: top center;
+        transform: skewX(0.001deg);
+        transition:
+            transform 0.35s ease-in-out,
+            opacity 0.5s ease-in-out;
+    }
+    .modal-card:hover::before {
+        opacity: 0.6;
+        transform: rotateX(7deg) translateY(-6px) scale(1.05);
+    }
+    .modal-icon {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        right: 12px;
+        top: 12px;
+        transform-origin: center center;
+        text-decoration: none;
+        color: #666;
+        box-shadow: inset 0 0 0 1px #c9c9c9, inset 0 1px 2px rgba(255, 255, 255, 0.5), inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+        background: conic-gradient(#d7d7d7, #c3c3c3, #cccccc, #c6c6c6, #d3d3d3, #d8d8d8, #d5d5d5, #d8d8d8, #d3d3d3, #c5c5c5, #c0c0c0, #bfbfbf, #d0d0d0, #d9d9d9, #d1d1d1, #c5c5c5, #c8c8c8, #d7d7d7, #d5d5d5, #cdcdcd, #c4c4c4, #d9d9d9, #cecece, #c5c5c5, #c5c5c5, #cdcdcd, #d8d8d8, #d9d9d9, #d7d7d7) content-box, linear-gradient(#d4d4d4, #d4d4d4) padding-box, radial-gradient(rgba(120, 120, 120, 0.9), rgba(120, 120, 120, 0) 70%) 50% bottom/80% 0.46875em no-repeat border-box;
+        text-shadow: 0 0 1px currentColor, 0 0 2px dimgrey;
+        backdrop-filter: blur(7px);
+        border-radius: 50%;
+        border-top: .031em solid #fadc88;
+        border-left: .031em solid #9c7625;
+        border-right: .031em solid #9c7625;
+        border-bottom: .031em solid #9c7625;
+        fill: currentColor;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+        transition: all .3s ease;
+        scale: .9;
+    }
+    .modal-icon:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, .15) inset;
+    }
+    .modal-icon:active {
+        box-shadow: rgba(9, 30, 66, .25) 0px 1px 1px, rgba(9, 30, 66, .13) 0px 0px 1px 1px  inset;
+    }
+    .metallic-button {
+        position: absolute;
+        left: 50%;
+        bottom: 5vh;
+        transform-origin: left bottom;
+        transform: translate(-50%);
+    }
+    .metallic-button > button {
+        position: relative;
+        padding: 12px 24px;
+        font-size: 1.1rem;
+        color: rgba(120, 140, 200, 1);
+        white-space: nowrap;
+        background: 
+            linear-gradient(
+                90deg,
+                hsla(230, 35%, 15%, .5) 0%,
+                hsla(245, 30%, 40%, .5) 15%,
+                hsla(230, 55%, 45%, .5) 40%,
+                hsla(225, 20%, 30%, .5) 60%,
+                hsla(235, 25%, 25%, .5) 80%,
+                hsla(225, 50%, 16%, .5) 100%
+            ),
+            linear-gradient(45deg, Black 0, #333333 20%, #666666 40%, #4d4d4d 70%, #000000 100%);
+        border-radius: 12px;
+        border: 4px solid #575757;
+        border: .5px solid #fadc88;
+        border-top: .031em solid #fadc88;
+        border-left: .031em solid #9c7625;
+        border-right: .031em solid #9c7625;
+        border-bottom: .031em solid #9c7625;
+        backdrop-filter: blur(3px) saturate(160%);
+        -webkit-backdrop-filter: blur(12px) saturate(160%);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        cursor: url("assets/images/pointer_hand.png"), pointer;
+        transition: all 0.35s ease;
+    }
+    .metallic-button > button::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+    .metallic-button > button:hover {
+        color: #a0c6ff;
+        box-shadow:
+            0 12px 40px rgba(255, 255, 255, 0.15),
+            0 0 20px rgba(0, 255, 255, 0.2);
+        transform: translateY(-2px) scale(1.03);
+        backdrop-filter: blur(6px) saturate(160%);
+    }
+    .metallic-button > button:hover::before {
+        opacity: 1;
+        animation: metal-shine 1s ease-out forwards;
+    }
+    .metallic-button > button:active {
+        color: rgba(200, 240, 255, 1);
+        background:
+            linear-gradient(
+                135deg,
+                rgba(0, 0, 0, .25) 0,
+                rgba(26, 26, 26, .25) 15%,
+                rgba(77, 77, 77, .25) 25%,
+                rgba(129, 54, 54, .25) 50%,
+                rgba(26, 26, 26, .25) 75%,
+                rgba(0, 0, 0, .25) 100%
+            ),
+            radial-gradient(circle farthest-corner at 50% 50%, transparent 45%, rgba(0, 0, 0, .5) 100%),
+            linear-gradient(
+                90deg,
+                hsla(230, 35%, 15%, .5) 0%,
+                hsla(245, 30%, 40%, .5) 15%,
+                hsla(230, 55%, 45%, .5) 40%,
+                hsla(225, 20%, 30%, .5) 60%,
+                hsla(235, 25%, 25%, .5) 80%,
+                hsla(225, 50%, 16%, .5) 100%
+            ),
+            linear-gradient(45deg, Black 0, #333333 20%, #666666 40%, #4d4d4d 70%, #000000 100%);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+        transform: translateY(0) scale(1);
+    }
+    @keyframes metal-shine {
+        0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+            opacity: 0.3;
+        }
+        100% {
+            transform: translate(150%, 150%) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    /* LUCKY CLUB*/
+    .elucky-sign {
+        position: absolute;
+        top: 47%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: top left;
+    }
+    .elucky-sign .draw-light-sign {
+        width: 800px;
+        height: 379px;
+        background: linear-gradient(90deg, #f16212 27%, #ffef1a 75%);
+        border-radius: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .elucky-sign .draw-light-sign .body-border {
+        background: radial-gradient(circle, #c30000 33%, #630004 77%);
+        height: 95%;
+        width: 97%;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .elucky-sign .draw-light-sign .body-border .elucky-text {
+        position: absolute;
+        background-color: #0b1c35;
+        border-radius: 10px;
+        height: 70%;
+        width: 85%;
+        border: 5px solid #fff;
+        display: grid;
+        grid-template-rows: 120px 50px;
+        place-content: center;
+    }
+    .elucky-sign .draw-light-sign .body-border .elucky-text .sign-good-text {
+        font-family: "Bungee Outline";
+        color: #fff;
+        font-size: 110px;
+        display: flex;
+        align-items: center;
+        text-shadow:
+            0 0 10px #ffffff,
+            0 0 1rem #f0eff0,
+            -0.2rem 0.1rem 10px #f0eff0;
+        animation:
+            shine 2s forwards,
+            Flashing 4s infinite;
+    }
+    .elucky-sign .draw-light-sign .body-border .elucky-text .sign-flicker-text {
+        font-family: "NeonGlow";
+        color: #fff;
+        font-size: 110px;
+        display: flex;
+        align-items: center;
+        text-shadow:
+            0 0 10px #ffffff,
+            0 0 1rem #f0eff0,
+            -0.2rem 0.1rem 10px #f0eff0;
+        animation:
+            shine 2s forwards,
+            Flashing1 3s infinite;
+    }
+    .elucky-sign .draw-light-sign .body-border .elucky-text .luck-text {
+        color: #b4e8ff;
+        font-size: 60px;
+        text-align: center;
+        text-shadow:
+            0 0 0.6rem #03a9f4,
+            0 0 1.5rem #64cdfc,
+            -0.2rem 0.1rem 1rem #64cdfc,
+            0.2rem 0.1rem 1rem #64cdfc,
+            0 -0.5rem 2rem #34c0ff,
+            0 0.5rem 3rem #34c0ff;
+    }
+    @keyframes shine {
+        0% {
+            color: #e4e4e4;
+            text-shadow: none;
+        }
+        100% {
+            color: #ffffff;
+            text-shadow:
+                0 0 10px #ffffff,
+                0 0 1rem #f0eff0,
+                -0.2rem 0.1rem 10px #f0eff0;
+        }
+    }
+    @keyframes Flashing {
+        from {
+            opacity: 1;
+        }
+        4% {
+            opacity: 0.9;
+        }
+        6% {
+            opacity: 0.85;
+        }
+        8% {
+            opacity: 0.95;
+        }
+        10% {
+            opacity: 0.9;
+        }
+        11% {
+            opacity: 0.922;
+        }
+        12% {
+            opacity: 0.9;
+        }
+        14% {
+            opacity: 0.95;
+        }
+        16% {
+            opacity: 0.98;
+        }
+        17% {
+            opacity: 0.9;
+        }
+        19% {
+            opacity: 0.93;
+        }
+        20% {
+            opacity: 0.99;
+        }
+        24% {
+            opacity: 1;
+        }
+        26% {
+            opacity: 0.94;
+        }
+        28% {
+            opacity: 0.98;
+        }
+        37% {
+            opacity: 0.93;
+        }
+        38% {
+            opacity: 0.5;
+        }
+        39% {
+            opacity: 0.96;
+        }
+        42% {
+            opacity: 1;
+        }
+        44% {
+            opacity: 0.97;
+        }
+        46% {
+            opacity: 0.94;
+        }
+        56% {
+            opacity: 0.9;
+        }
+        58% {
+            opacity: 0.9;
+        }
+        60% {
+            opacity: 0.99;
+        }
+        68% {
+            opacity: 1;
+        }
+        70% {
+            opacity: 0.9;
+        }
+        72% {
+            opacity: 0.95;
+        }
+        93% {
+            opacity: 0.93;
+        }
+        95% {
+            opacity: 0.95;
+        }
+        97% {
+            opacity: 0.93;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes Flashing1 {
+        from {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.99;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    .elucky-sign .draw-start-button {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+    .elucky-sign .draw-start-button .draw {
+        cursor: pointer;
+        height: 48px;
+        background: transparent radial-gradient(closest-side at 50% 50%, #bd0a05 0%, #5f0503 100%) 0% 0% no-repeat
+            padding-box;
+        width: 207px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        color: #fff;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+        line-height: 33px;
+        margin-left: -42px;
+    }
+    .elucky-led-light {
+        width: 35px;
+        height: 35px;
+        -webkit-animation: blinkLight 1s infinite;
+        -moz-animation: blinkLight 1s infinite;
+        -ms-animation: blinkLight 1s infinite;
+        -o-animation: blinkLight 1s infinite;
+        animation: blinkLight 1s infinite;
+        background-color: #ff9800;
+        border-radius: 50%;
+        box-shadow:
+            rgba(253, 242, 163, 0.32) 0 -1px 3px 0px,
+            inset #fbf4b5 0 -1px 9px,
+            rgba(249, 246, 224, 0.5) 0 2px 0;
+    }
+
+    @-webkit-keyframes blinkLight {
+        from {
+            background-color: #ff9800;
+        }
+        50% {
+            background-color: #f8f2b7;
+            box-shadow:
+                #f7eb81 0px 1px 15px 6px,
+                inset #fbf4b5 0 -1px 9px,
+                rgba(249, 246, 224, 0.5) 0 2px 0;
+        }
+        to {
+            background-color: #ff9800;
+        }
+    }
+    @-moz-keyframes blinkLight {
+        from {
+            background-color: #ff9800;
+        }
+        50% {
+            background-color: #f8f2b7;
+            box-shadow:
+                #f7eb81 0px 1px 15px 6px,
+                inset #fbf4b5 0 -1px 9px,
+                rgba(249, 246, 224, 0.5) 0 2px 0;
+        }
+        to {
+            background-color: #ff9800;
+        }
+    }
+    @-o-keyframes blinkLight {
+        from {
+            background-color: #ff9800;
+        }
+        50% {
+            background-color: #f8f2b7;
+            box-shadow:
+                #f7eb81 0px 1px 15px 6px,
+                inset #fbf4b5 0 -1px 9px,
+                rgba(249, 246, 224, 0.5) 0 2px 0;
+        }
+        to {
+            background-color: #ff9800;
+        }
+    }
+    @-ms-keyframes blinkLight {
+        from {
+            background-color: #ff9800;
+        }
+        50% {
+            background-color: #f8f2b7;
+            box-shadow:
+                #f7eb81 0px 1px 15px 6px,
+                inset #fbf4b5 0 -1px 9px,
+                rgba(249, 246, 224, 0.5) 0 2px 0;
+        }
+        to {
+            background-color: #ff9800;
+        }
+    }
+    @keyframes blinkLight {
+        from {
+            background-color: #ff9800;
+        }
+        50% {
+            background-color: #f8f2b7;
+            box-shadow:
+                #f7eb81 0px 1px 15px 6px,
+                inset #fbf4b5 0 -1px 9px,
+                rgba(249, 246, 224, 0.5) 0 2px 0;
+        }
+        to {
+            background-color: #ff9800;
+        }
+    }
+    .elucky-led-orange {
+        width: 35px;
+        height: 35px;
+        background-color: #ffa805;
+        border-radius: 50%;
+        box-shadow:
+            rgba(251, 208, 80, 0.53) 0 -1px 4px 1px,
+            inset #dc9106 0 -1px 9px,
+            rgba(255, 193, 7, 0.58) 0 2px 12px;
+        -webkit-animation: blinkOrange 0.7s infinite;
+        -moz-animation: blinkOrange 0.7s infinite;
+        -ms-animation: blinkOrange 0.7s infinite;
+        -o-animation: blinkOrange 0.7s infinite;
+        animation: blinkOrange 0.7s infinite;
+    }
+
+    @-webkit-keyframes blinkOrange {
+        from {
+            background-color: #ffa805;
+        }
+        50% {
+            background-color: #ffca7a;
+            box-shadow:
+                #ff9a00d1 0 0px 9px 9px,
+                inset #ffcf75 0 -1px 9px,
+                #ff9800 0 2px 0;
+        }
+        to {
+            background-color: #ffa805;
+        }
+    }
+    @-moz-keyframes blinkOrange {
+        from {
+            background-color: #ffa805;
+        }
+        50% {
+            background-color: #ffca7a;
+            box-shadow:
+                #ff9a00d1 0 0px 9px 9px,
+                inset #ffcf75 0 -1px 9px,
+                #ff9800 0 2px 0;
+        }
+        to {
+            background-color: #ffa805;
+        }
+    }
+    @-o-keyframes blinkOrange {
+        from {
+            background-color: #ffa805;
+        }
+        50% {
+            background-color: #ffca7a;
+            box-shadow:
+                #ff9a00d1 0 0px 9px 9px,
+                inset #ffcf75 0 -1px 9px,
+                #ff9800 0 2px 0;
+        }
+        to {
+            background-color: #ffa805;
+        }
+    }
+    @-ms-keyframes blinkOrange {
+        from {
+            background-color: #ffa805;
+        }
+        50% {
+            background-color: #ffca7a;
+            box-shadow:
+                #ff9a00d1 0 0px 9px 9px,
+                inset #ffcf75 0 -1px 9px,
+                #ff9800 0 2px 0;
+        }
+        to {
+            background-color: #ffa805;
+        }
+    }
+    @keyframes blinkOrange {
+        from {
+            background-color: #ffa805;
+        }
+        50% {
+            background-color: #ffca7a;
+            box-shadow:
+                #ff9a00d1 0 0px 9px 9px,
+                inset #ffcf75 0 -1px 9px,
+                #ff9800 0 2px 0;
+        }
+        to {
+            background-color: #ffa805;
+        }
+    }
+    .elucky-led-yellow {
+        width: 35px;
+        height: 35px;
+        background-color: gold;
+        border-radius: 50%;
+        box-shadow:
+            #bba800 0 -1px 7px 1px,
+            inset #f4ca16 0 -1px 9px,
+            #ffeb3b 0 2px 12px;
+        -webkit-animation: blinkYellow 1.5s infinite;
+        -moz-animation: blinkYellow 1.5s infinite;
+        -ms-animation: blinkYellow 1.5s infinite;
+        -o-animation: blinkYellow 1.5s infinite;
+        animation: blinkYellow 1.5s infinite;
+    }
+
+    @-webkit-keyframes blinkYellow {
+        from {
+            background-color: gold;
+        }
+        50% {
+            background-color: #eee600;
+            box-shadow:
+                #ffe500 0 -1px 11px 6px,
+                inset #f4ca16 0 -1px 9px,
+                #ffeb3b 0 2px 12px;
+        }
+        to {
+            background-color: #ffea76;
+        }
+    }
+    @-moz-keyframes blinkYellow {
+        from {
+            background-color: gold;
+        }
+        50% {
+            background-color: #eee600;
+            box-shadow:
+                #ffe500 0 -1px 11px 6px,
+                inset #f4ca16 0 -1px 9px,
+                #ffeb3b 0 2px 12px;
+        }
+        to {
+            background-color: #ffea76;
+        }
+    }
+    @-o-keyframes blinkYellow {
+        from {
+            background-color: gold;
+        }
+        50% {
+            background-color: #eee600;
+            box-shadow:
+                #ffe500 0 -1px 11px 6px,
+                inset #f4ca16 0 -1px 9px,
+                #ffeb3b 0 2px 12px;
+        }
+        to {
+            background-color: #ffea76;
+        }
+    }
+    @-ms-keyframes blinkYellow {
+        from {
+            background-color: gold;
+        }
+        50% {
+            background-color: #eee600;
+            box-shadow:
+                #ffe500 0 -1px 11px 6px,
+                inset #f4ca16 0 -1px 9px,
+                #ffeb3b 0 2px 12px;
+        }
+        to {
+            background-color: #ffea76;
+        }
+    }
+    @keyframes blinkYellow {
+        from {
+            background-color: gold;
+        }
+        50% {
+            background-color: #eee600;
+            box-shadow:
+                #ffe500 0 -1px 11px 6px,
+                inset #f4ca16 0 -1px 9px,
+                #ffeb3b 0 2px 12px;
+        }
+        to {
+            background-color: #ffea76;
+        }
+    }
+    .elucky-neon-top {
+        position: absolute;
+        display: flex;
+        justify-content: space-evenly;
+        width: 96%;
+        top: 10px;
+        margin-left: 20px;
+    }
+    .elucky-neon-bottom {
+        position: absolute;
+        display: flex;
+        justify-content: space-evenly;
+        width: 96%;
+        bottom: 10px;
+        left: 10px;
+    }
+    .elucky-neon-left {
+        position: absolute;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        left: 10px;
+        height: 100%;
+        margin-bottom: 20px;
+    }
+    .elucky-neon-right {
+        position: absolute;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        right: 10px;
+        height: 100%;
+    }
+    /* ELOAN */
+    :root {
+        --hue-ecoin: 163;
+        --hue-ecoin2: 43;
+        font-size: calc(20px + (40 - 20) * (100vw - 280px) / (3840 - 280));
+    }
+    .eloan {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 9.1em;
+        top: 47%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: top left;
+    }
+    .eloan__coin,
+    .eloan__coin-flare,
+    .eloan__coin-inscription,
+    .eloan__coin-layers,
+    .eloan__shadow {
+        animation-duration: 2s;
+        animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+        animation-iteration-count: infinite;
+    }
+    .eloan__coin {
+        animation-name: ecoin-bounce;
+        position: relative;
+        transform: translateY(0.5em);
+        z-index: 1;
+    }
+    .eloan__coin-flare,
+    .eloan__coin-inscription,
+    .eloan__coin-layer {
+        position: absolute;
+    }
+    .eloan__coin-flare {
+        animation-name: ecoin-flare1;
+        background-color: white;
+        clip-path: polygon(50% 0, 67% 33%, 100% 50%, 67% 67%, 50% 100%, 33% 67%, 0 50%, 33% 33%);
+        top: 0;
+        left: -0.5em;
+        width: 1em;
+        height: 1em;
+        transform: scale(0);
+        z-index: 1;
+    }
+    .eloan__coin-flare:nth-child(2) {
+        animation-name: ecoin-flare2;
+        top: -0.5em;
+        left: 0;
+    }
+    .eloan__coin-flare:nth-child(3) {
+        animation-name: ecoin-flare3;
+        left: 3em;
+    }
+    .eloan__coin-flare:nth-child(4) {
+        animation-name: ecoin-flare4;
+        top: -0.5em;
+        left: 3.5em;
+    }
+    .eloan__coin-inscription {
+        animation-name: inscription-front;
+        background-color: hsl(var(--hue-ecoin2), 90%, 45%);
+        box-shadow: 0.1875em 0 0 hsl(var(--hue-ecoin2), 90%, 40%) inset;
+        top: 50%;
+        left: 50%;
+        width: 0.5em;
+        height: 2.5em;
+        transform: translate(-50%, -50%) rotateZ(30deg);
+    }
+    .eloan__coin-layer {
+        background-color: hsl(var(--hue-ecoin2), 90%, 50%);
+        backface-visibility: hidden;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0.375em hsl(var(--hue-ecoin2), 90%, 70%) inset;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .eloan__coin-layer:first-child {
+        transform: translate3d(0, 0, 0.5em);
+    }
+    .eloan__coin-layer:nth-child(2) {
+        transform: translate3d(0, 0, 0.49em) rotateY(180deg);
+    }
+    .eloan__coin-layer:nth-child(3) {
+        backface-visibility: visible;
+        border-radius: 0;
+        left: 50%;
+        width: 0.98em;
+        transform: translateX(-50%) rotateY(90deg);
+    }
+    .eloan__coin-layer:nth-child(4) {
+        transform: translate3d(0, 0, -0.49em);
+    }
+    .eloan__coin-layer:last-child {
+        transform: translate3d(0, 0, -0.5em) rotateY(180deg);
+    }
+    .eloan__coin-layer:nth-child(n + 2):nth-last-child(n + 2) {
+        background-color: hsl(var(--hue-ecoin2), 90%, 40%);
+        box-shadow: none;
+    }
+    .eloan__coin-layer:last-child .eloan__coin-inscription {
+        animation-name: inscription-back;
+        transform: translate(-50%, -50%) rotateZ(-30deg);
+    }
+    .eloan__coin-layers {
+        animation-name: ecoin-roll;
+        position: relative;
+        width: 4em;
+        height: 4em;
+        transform: rotateY(-15deg) rotateZ(-30deg);
+        transform-style: preserve-3d;
+    }
+    .eloan__shadow {
+        animation-name: ecoin-shadow;
+        background-color: hsla(var(--hue-ecoin), 90%, 10%, 0.3);
+        border-radius: 50%;
+        width: 4em;
+        height: 0.5em;
+    }
+    @keyframes ecoin-bounce {
+        from,
+        50%,
+        to {
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+            transform: translateY(0.5em);
+        }
+        25%,
+        75% {
+            animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+            transform: translateY(5.1em);
+        }
+    }
+    @keyframes ecoin-flare1 {
+        from,
+        75%,
+        to {
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+            transform: scale(0);
+        }
+        87.5% {
+            animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+            transform: scale(1);
+        }
+    }
+    @keyframes ecoin-flare2 {
+        from,
+        to {
+            animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+            transform: scale(1);
+        }
+        12.5%,
+        87.5% {
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+            transform: scale(0);
+        }
+    }
+    @keyframes ecoin-flare3 {
+        from,
+        25%,
+        50%,
+        to {
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+            transform: scale(0);
+        }
+        37.5% {
+            animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+            transform: scale(1);
+        }
+    }
+    @keyframes ecoin-flare4 {
+        from,
+        37.5%,
+        62.5%,
+        to {
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+            transform: scale(0);
+        }
+        50% {
+            animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+            transform: scale(1);
+        }
+    }
+    @keyframes inscription-front {
+        from,
+        75% {
+            animation-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
+            box-shadow: 0.1875em 0 0 hsl(var(--hue-ecoin2), 90%, 40%) inset;
+        }
+        87.49% {
+            animation-timing-function: steps(1);
+            box-shadow: 0.875em -0.75em 0 hsl(var(--hue-ecoin2), 90%, 40%) inset;
+        }
+        87.5% {
+            animation-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+            box-shadow: -0.875em 0.75em 0 hsl(var(--hue-ecoin2), 90%, 40%) inset;
+        }
+        to {
+            box-shadow: 0.1875em 0 hsl(var(--hue-ecoin2), 90%, 40%) inset;
+        }
+    }
+    @keyframes inscription-back {
+        from,
+        75% {
+            box-shadow: -1em -0.875em 0 hsl(var(--hue-ecoin2), 90%, 40%) inset;
+        }
+        to {
+            box-shadow: 1.125em 1em 0 hsl(var(--hue-ecoin2), 90%, 40%) inset;
+        }
+    }
+    @keyframes ecoin-roll {
+        from,
+        75% {
+            transform: rotateY(-15deg) rotateZ(-30deg) rotateY(0);
+        }
+        to {
+            transform: rotateY(-15deg) rotateZ(-30deg) rotateY(-1turn);
+        }
+    }
+    @keyframes ecoin-shadow {
+        from,
+        50%,
+        to {
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+            background-color: hsla(var(--hue-ecoin), 90%, 10%, 0.3);
+            transform: scale(0.6);
+        }
+        25%,
+        75% {
+            animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+            background-color: hsla(var(--hue-ecoin), 90%, 10%, 0.5);
+            transform: scale(1);
+        }
+    }
+    /* SLOT MACHINE */
+    .pre-loader-reel-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: center center;
+    }
+    .pre-loader-reel-cylinder-block {
+        height: 231px;
+        width: 522px;
+        margin: -216px 0 0 -261px;
+        position: absolute;
+        top: calc(50% + 96px);
+        left: 50%;
+        -webkit-transform: rotate(-9deg);
+        -moz-transform: rotate(-9deg);
+        -o-transform: rotate(-9deg);
+        transform: rotate(-9deg);
+    }
+    .pre-loader-reel-cylinder-block:before {
+        content: "";
+        height: 231px;
+        width: 522px;
+        background: url(assets/images/bg.png) 0 0 no-repeat;
+        background-size: 100% auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    .pre-loader-reel-cylinder-block:after {
+        content: "";
+        height: 366px;
+        width: 495px;
+        z-index: -1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    .pre-loader-reel-cylinder_box::before {
+        content: "";
+        height: 231px;
+        width: 383px;
+        background: url(assets/images/glow.png) 0 0 no-repeat;
+        background-size: 100% auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -51%);
+        -moz-transform: translate(-50%, -51%);
+        -o-transform: translate(-50%, -51%);
+        transform: translate(-50%, -51%);
+    }
+    .pre-loader-reel-cylinder_box {
+        height: 231px;
+        width: 522px;
+        overflow: hidden;
+        bottom: 0;
+        left: 0;
+        position: relative;
+    }
+    .pre-loader-reel-cylinder_wrap {
+        display: flex;
+        justify-content: space-around;
+        width: 410px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -48%);
+        -moz-transform: translate(-50%, -48%);
+        -o-transform: translate(-50%, -48%);
+        transform: translate(-50%, -48%);
+    }
+    .pre-loader-reel-cylinder {
+        height: 80px;
+        width: 110px;
+        perspective: 1000px;
+        position: relative;
+    }
+    .pre-loader-reel-cylinder_in {
+        width: 100%;
+        height: 100%;
+        transform: translateZ(23px);
+        position: absolute;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-animation: an-spin-two 10s linear infinite;
+        -moz-animation: an-spin-two 10s linear infinite;
+        -o-animation: an-spin-two 10s linear infinite;
+        animation: an-spin-two 10s linear infinite;
+    }
+    .pre-loader-reel-cylinder_one .pre-loader-reel-cylinder_in {
+        -webkit-transform: translateZ(23px) rotateY(-13deg) translateX(28px);
+        -moz-transform: translateZ(23px) rotateY(-13deg) translateX(28px);
+        -o-transform: translateZ(23px) rotateY(-13deg) translateX(28px);
+        transform: translateZ(23px) rotateY(-13deg) translateX(28px);
+        -webkit-animation: an-spin-one 10s linear infinite;
+        -moz-animation: an-spin-one 10s linear infinite;
+        -o-animation: an-spin-one 10s linear infinite;
+        animation: an-spin-one 10s linear infinite;
+    }
+    .pre-loader-reel-cylinder_three .pre-loader-reel-cylinder_in {
+        -webkit-transform: translateZ(23px) rotateY(13deg) translateX(-28px) rotateX(0deg);
+        -moz-transform: translateZ(23px) rotateY(13deg) translateX(-28px) rotateX(0deg);
+        -o-transform: translateZ(23px) rotateY(13deg) translateX(-28px) rotateX(0deg);
+        transform: translateZ(23px) rotateY(13deg) translateX(-28px) rotateX(0deg);
+        -webkit-animation: an-spin-three 10s linear infinite;
+        -moz-animation: an-spin-three 10s linear infinite;
+        -o-animation: an-spin-three 10s linear infinite;
+        animation: an-spin-three 10s linear infinite;
+    }
+    .pre-loader-reel-cylinder_item {
+        height: 80px;
+        width: 110px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    .pre-loader-reel-cylinder_item:nth-child(even) {
+        background: url(assets/images/bar.png) center no-repeat;
+        -webkit-background-size: 70% auto;
+        background-size: 70px auto;
+    }
+    .pre-loader-reel-cylinder_item:nth-child(odd) {
+        background: url(assets/images/seven.png) center no-repeat;
+        -webkit-background-size: auto 80%;
+        background-size: 70px auto;
+    }
+    .pre-loader-reel-cylinder_item:nth-child(1) {
+        -webkit-transform: rotateX(0deg) translateZ(109px);
+        -moz-transform: rotateX(0deg) translateZ(109px);
+        -o-transform: rotateX(0deg) translateZ(109px);
+        transform: rotateX(0deg) translateZ(109px);
+    }
+    .pre-loader-reel-cylinder_item:nth-child(2) {
+        -webkit-transform: rotateX(45deg) translateZ(109px);
+        -moz-transform: rotateX(45deg) translateZ(109px);
+        -o-transform: rotateX(45deg) translateZ(109px);
+        transform: rotateX(45deg) translateZ(109px);
+    }
+    .pre-loader-reel-cylinder_item:nth-child(3) {
+        -webkit-transform: rotateX(90deg) translateZ(109px);
+        -moz-transform: rotateX(90deg) translateZ(109px);
+        -o-transform: rotateX(90deg) translateZ(109px);
+        transform: rotateX(90deg) translateZ(109px);
+    }
+    .pre-loader-reel-cylinder_item:nth-child(4) {
+        -webkit-transform: rotateX(135deg) translateZ(109px);
+        -moz-transform: rotateX(135deg) translateZ(109px);
+        -o-transform: rotateX(135deg) translateZ(109px);
+        transform: rotateX(135deg) translateZ(109px);
+    }
+    .pre-loader-reel-cylinder_item:nth-child(5) {
+        -webkit-transform: rotateX(180deg) translateZ(109px);
+        -moz-transform: rotateX(180deg) translateZ(109px);
+        -o-transform: rotateX(180deg) translateZ(109px);
+        transform: rotateX(180deg) translateZ(109px);
+    }
+    .pre-loader-reel-cylinder_item:nth-child(6) {
+        -webkit-transform: rotateX(225deg) translateZ(109px);
+        -moz-transform: rotateX(225deg) translateZ(109px);
+        -o-transform: rotateX(225deg) translateZ(109px);
+        transform: rotateX(225deg) translateZ(109px);
+    }
+    .pre-loader-reel-cylinder_item:nth-child(7) {
+        -webkit-transform: rotateX(270deg) translateZ(109px);
+        -moz-transform: rotateX(270deg) translateZ(109px);
+        -o-transform: rotateX(270deg) translateZ(109px);
+        transform: rotateX(270deg) translateZ(109px);
+    }
+    .pre-loader-reel-cylinder_item:nth-child(8) {
+        -webkit-transform: rotateX(315deg) translateZ(109px);
+        -moz-transform: rotateX(315deg) translateZ(109px);
+        -o-transform: rotateX(315deg) translateZ(109px);
+        transform: rotateX(315deg) translateZ(109px);
+    }
+    @-webkit-keyframes an-spin-one {
+        0% {
+            -webkit-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+        }
+        40% {
+            -webkit-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+        }
+        60%,
+        100% {
+            -webkit-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+        }
+    }
+    @-moz-keyframes an-spin-one {
+        0% {
+            -moz-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+        }
+        40% {
+            -moz-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+        }
+        60%,
+        100% {
+            -moz-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+        }
+    }
+    @-o-keyframes an-spin-one {
+        0% {
+            -o-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+        }
+        40% {
+            -o-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+        }
+        60%,
+        100% {
+            -o-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+        }
+    }
+    @keyframes an-spin-one {
+        0% {
+            -webkit-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+            -moz-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+            -o-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(0);
+        }
+        40% {
+            -webkit-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+            -moz-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+            -o-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-365deg);
+        }
+        60%,
+        100% {
+            -webkit-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+            -moz-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+            -o-transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+            transform: translateZ(23px) rotateY(-13deg) translateX(28px) rotateX(-360deg);
+        }
+    }
+    @-webkit-keyframes an-spin-two {
+        0% {
+            -webkit-transform: translateZ(23px) rotateX(0);
+            transform: translateZ(23px) rotateX(0);
+        }
+        43% {
+            -webkit-transform: translateZ(23px) rotateX(-445deg);
+            transform: translateZ(23px) rotateX(-445deg);
+        }
+        63%,
+        100% {
+            -webkit-transform: translateZ(23px) rotateX(-450deg);
+            transform: translateZ(23px) rotateX(-450deg);
+        }
+    }
+    @-moz-keyframes an-spin-two {
+        0% {
+            -moz-transform: translateZ(23px) rotateX(0);
+            transform: translateZ(23px) rotateX(0);
+        }
+        43% {
+            -moz-transform: translateZ(23px) rotateX(-445deg);
+            transform: translateZ(23px) rotateX(-445deg);
+        }
+        63%,
+        100% {
+            -moz-transform: translateZ(23px) rotateX(-450deg);
+            transform: translateZ(23px) rotateX(-450deg);
+        }
+    }
+    @-o-keyframes an-spin-two {
+        0% {
+            -o-transform: translateZ(23px) rotateX(0);
+            transform: translateZ(23px) rotateX(0);
+        }
+        43% {
+            -o-transform: translateZ(23px) rotateX(-445deg);
+            transform: translateZ(23px) rotateX(-445deg);
+        }
+        63%,
+        100% {
+            -o-transform: translateZ(23px) rotateX(-450deg);
+            transform: translateZ(23px) rotateX(-450deg);
+        }
+    }
+    @keyframes an-spin-two {
+        0% {
+            -webkit-transform: translateZ(23px) rotateX(0);
+            -moz-transform: translateZ(23px) rotateX(0);
+            -o-transform: translateZ(23px) rotateX(0);
+            transform: translateZ(23px) rotateX(0);
+        }
+        43% {
+            -webkit-transform: translateZ(23px) rotateX(-445deg);
+            -moz-transform: translateZ(23px) rotateX(-445deg);
+            -o-transform: translateZ(23px) rotateX(-445deg);
+            transform: translateZ(23px) rotateX(-445deg);
+        }
+        63%,
+        100% {
+            -webkit-transform: translateZ(23px) rotateX(-450deg);
+            -moz-transform: translateZ(23px) rotateX(-450deg);
+            -o-transform: translateZ(23px) rotateX(-450deg);
+            transform: translateZ(23px) rotateX(-450deg);
+        }
+    }
+    @-webkit-keyframes an-spin-three {
+        0% {
+            -webkit-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+        }
+        48% {
+            -webkit-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+        }
+        68%,
+        100% {
+            -webkit-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+        }
+    }
+    @-moz-keyframes an-spin-three {
+        0% {
+            -moz-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+        }
+        48% {
+            -moz-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+        }
+        68%,
+        100% {
+            -moz-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+        }
+    }
+    @-o-keyframes an-spin-three {
+        0% {
+            -o-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+        }
+        48% {
+            -o-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+        }
+        68%,
+        100% {
+            -o-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+        }
+    }
+    @keyframes an-spin-three {
+        0% {
+            -webkit-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+            -moz-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+            -o-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(0);
+        }
+        48% {
+            -webkit-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+            -moz-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+            -o-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-525deg);
+        }
+        68%,
+        100% {
+            -webkit-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+            -moz-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+            -o-transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+            transform: translateZ(0px) rotateY(13deg) translateX(-28px) rotateX(-540deg);
+        }
+    }
+    /* Viewport */
+    .club-1,
+    .club-2 {
+        scale: .42;
+    }
+    .coin-1,
+    .coin-2 {
+        scale: 1.42;
+    }
+    .reel-1,
+    .reel-2 {
+        scale: .76;
+    }
+    /* Tablet portrait */
+    @media only screen and (min-width: 600px) and (max-width: 1180px) and (orientation: portrait) {
+        .modal-icon {
+            scale: .8;
+            right: 9px;
+            top: 9px;
+        }
+        .metallic-button {
+            scale: 1;
+        }
+        .club-1 {
+            scale: .24;
+        }
+        .club-2 {
+            scale: .36;
+        }
+        .coin-1 {
+            scale: 1.24;
+        }
+        .coin-2 {
+            scale: 1.42;
+        }
+        .reel-1 {
+            scale: .42;
+        }   
+        .reel-2 {
+            scale: .6;
+        }   
+    }
+    /* Tablet landscape */
+    @media only screen and (min-width: 600px) and (max-width: 1180px) and (orientation: landscape) {
+        .modal-icon {
+            scale: .8;
+            right: 9px;
+            top: 9px;
+        }
+        .metallic-button {
+            scale: 1;
+        }
+        .club-1 {
+            scale: .36;
+        }
+        .club-2 {
+            scale: .36;
+        }
+        .coin-1 {
+            scale: 1.36;
+        }
+        .coin-2 {
+            scale: 1.42;
+        }
+        .reel-1 {
+            scale: .6;
+        }   
+        .reel-2 {
+            scale: .6;
+        }   
+    }
+    /* Mobile portrait */
+    @media only screen and (max-width: 430px) and (orientation: portrait) {
+        .modal-icon {
+            scale: .6;
+            right: 3px;
+            top: 3px;
+        }
+        .metallic-button {
+            scale: .64;
+        }
+        .club-1 {
+            scale: .11;
+        }
+        .club-2 {
+            scale: .17;
+        }
+        .coin-1 {
+            scale: .64;
+        }
+        .coin-2 {
+            scale: .7;
+        }
+        .reel-1 {
+            scale: .19;
+        }   
+        .reel-2 {
+            scale: .26;
+        }   
+    }
+    /* Mobile landscape */
+    @media only screen and (min-width: 414px) and (max-width: 932px) and (orientation: landscape) {
+        .modal-icon {
+            scale: .6;
+            right: 3px;
+            top: 3px;
+        }
+        .metallic-button {
+            scale: .64;
+        }
+        .club-1 {
+            scale: .16;
+        }
+        .club-2 {
+            scale: .17;
+        }
+        .coin-1 {
+            scale: .76;
+        }
+        .coin-2 {
+            scale: .8;
+        }
+        .reel-1 {
+            scale: .27;
+        }   
+        .reel-2 {
+            scale: .27;
+        }   
+    }
+</style>
+<div class="colorRayContainer">
+    <div class="lightRays"></div>
+    <div class="colorRays"></div>
+</div>
+<div class="card-cont">
+    <div class="hand">
+        <!-- original cards-->
+        <section class="card-frame card-origin modal-frame">
+            <div class="modal-front"></div>
+            <div class="modal-overlay">
+                <div class="modal-card">
+                    <div class="modal-card__cover" style="background: transparent">
+                        <div class="elucky-sign club-1">
+                            <div class="draw-light-sign border-gradient">
+                                <div class="body-border">
+                                    <div class="elucky-neon-top">
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-orange"></div>
+                                    </div>
+                                    <div class="elucky-neon-left">
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                    </div>
+                                    <div class="elucky-neon-bottom">
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                    </div>
+                                    <div class="elucky-neon-right">
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-orange"></div>
+                                    </div>
+                                    <div class="elucky-text">
+                                        <div style="display: flex">
+                                        <span class="sign-good-text">
+                                            LUCK
+                                        </span>
+                                        <span class="sign-flicker-text">Y</span></div>
+                                        <span class="luck-text">CLUB</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="card-frame card-origin modal-frame">
+            <div class="modal-front"></div>
+            <div class="modal-overlay">
+                <div class="modal-card">
+                    <div class="modal-card__cover" style="background: transparent">
+                        <div class="eloan coin-1">
+                            <div class="eloan__coin">
+                                <div class="eloan__coin-flare"></div>
+                                <div class="eloan__coin-flare"></div>
+                                <div class="eloan__coin-flare"></div>
+                                <div class="eloan__coin-flare"></div>
+                                <div class="eloan__coin-layers">
+                                    <div class="eloan__coin-layer">
+                                        <div class="eloan__coin-inscription"></div>
+                                    </div>
+                                    <div class="eloan__coin-layer"></div>
+                                    <div class="eloan__coin-layer"></div>
+                                    <div class="eloan__coin-layer"></div>
+                                    <div class="eloan__coin-layer">
+                                        <div class="eloan__coin-inscription"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="eloan__shadow">
+                                <span class="grant" style="position: absolute; left: -50px; bottom: 24px; font-size: 42px; white-space: nowrap; z-index: 1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="card-frame card-origin modal-frame">
+            <div class="modal-front"></div>
+            <div class="modal-overlay">
+                <div class="modal-card">
+                    <div class="modal-card__cover" style="background: transparent">
+                        <div class="pre-loader-reel-container reel-1">
+                            <div class="pre-loader-reel-cylinder-block">
+                                <div class="pre-loader-reel-cylinder_box">
+                                    <div class="pre-loader-reel-cylinder_wrap">
+                                        <div>
+                                            <div class="pre-loader-reel-cylinder pre-loader-reel-cylinder_one">
+                                                <div class="pre-loader-reel-cylinder_in">
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="pre-loader-reel-cylinder pre-loader-reel-cylinder_two">
+                                                <div class="pre-loader-reel-cylinder_in">
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="pre-loader-reel-cylinder pre-loader-reel-cylinder_three">
+                                                <div class="pre-loader-reel-cylinder_in">
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <article class="hand__curtain"></article>
+        <!-- clone cards-->
+        <section class="card-frame-clone card-clone modal-frame">
+            <div class="modal-front"></div>
+            <div class="modal-overlay">
+                <div class="modal-card">
+                    <div class="modal-card__cover" style="background: transparent">
+                        <div class="elucky-sign club-2">
+                            <div class="draw-light-sign border-gradient">
+                                <div class="body-border">
+                                    <div class="elucky-neon-top">
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-orange"></div>
+                                    </div>
+                                    <div class="elucky-neon-left">
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                    </div>
+                                    <div class="elucky-neon-bottom">
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                    </div>
+                                    <div class="elucky-neon-right">
+                                        <div class="elucky-led-light"></div>
+                                        <div class="elucky-led-orange"></div>
+                                        <div class="elucky-led-yellow"></div>
+                                        <div class="elucky-led-orange"></div>
+                                    </div>
+                                    <div class="elucky-text">
+                                        <div style="display: flex">
+                                        <span class="sign-good-text">
+                                            LUCK
+                                        </span>
+                                        <span class="sign-flicker-text">Y</span></div>
+                                        <span class="luck-text">CLUB</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="modal-icon" onclick="closeCard({})">
+                <i class="fa fa-times"></i>
+            </span>
+            <div class="metallic-button">
+                <button onclick="_uz.joinClub({ in: _uz.user && _uz.user.opened && _uz.user.opened.player })"><i class="fa fa-heart"></i> Join</button>
+            </div>
+        </section>
+        <section class="card-frame-clone card-clone modal-frame">
+            <div class="modal-front"></div>
+            <div class="modal-overlay">
+                <div class="modal-card">
+                    <div class="modal-card__cover" style="background: transparent">
+                        <div class="eloan coin-2">
+                            <div class="eloan__coin">
+                                <div class="eloan__coin-flare"></div>
+                                <div class="eloan__coin-flare"></div>
+                                <div class="eloan__coin-flare"></div>
+                                <div class="eloan__coin-flare"></div>
+                                <div class="eloan__coin-layers">
+                                    <div class="eloan__coin-layer">
+                                        <div class="eloan__coin-inscription"></div>
+                                    </div>
+                                    <div class="eloan__coin-layer"></div>
+                                    <div class="eloan__coin-layer"></div>
+                                    <div class="eloan__coin-layer"></div>
+                                    <div class="eloan__coin-layer">
+                                        <div class="eloan__coin-inscription"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="eloan__shadow">
+                                <span class="grant" style="position: absolute; left: -50px; bottom: 24px; font-size: 42px; white-space: nowrap; z-index: 1"></span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
+            <span class="modal-icon" onclick="closeCard({})">
+                <i class="fa fa-times"></i>
+            </span>
+            <div class="metallic-button">
+                <button onclick="_uz.loanRequest({ out: _uz.user && _uz.user.opened && !_uz.user.opened.player })"><i class="fa fa-certificate"></i> Loan</button>
+            </div>
+        </section>
+        <section class="card-frame-clone card-clone modal-frame">
+            <div class="modal-front"></div>
+            <div class="modal-overlay">
+                <div class="modal-card">
+                    <div class="modal-card__cover" style="background: transparent">
+                        <div class="pre-loader-reel-container reel-2">
+                            <div class="pre-loader-reel-cylinder-block">
+                                <div class="pre-loader-reel-cylinder_box">
+                                    <div class="pre-loader-reel-cylinder_wrap">
+                                        <div>
+                                            <div class="pre-loader-reel-cylinder pre-loader-reel-cylinder_one">
+                                                <div class="pre-loader-reel-cylinder_in">
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="pre-loader-reel-cylinder pre-loader-reel-cylinder_two">
+                                                <div class="pre-loader-reel-cylinder_in">
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="pre-loader-reel-cylinder pre-loader-reel-cylinder_three">
+                                                <div class="pre-loader-reel-cylinder_in">
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                    <div class="pre-loader-reel-cylinder_item"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="modal-icon" onclick="closeCard({})">
+                <i class="fa fa-times"></i>
+            </span>
+            <div class="metallic-button">
+                <button onclick="_uz.playSpin({})" style="display: flex; justify-content: center; align-items: center; width: 64px; height: 64px; border-radius: 50%">
+                    <i class="fa fa-refresh" style="font-size: 24px"></i>
+                </button>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    let _uz = {
+        user: localStorage.user ? JSON.parse(localStorage.user) : { agreed: {}, opened: {} },
+        grant: {
+			0: { amount: "100", left: "-42px" },
+			1: { amount: "1,500", left: "-60px" },
+			2: { amount: "2,500", left: "-60px" },
+			3: { amount: "4,500", left: "-60px" },
+            4: { amount: "", left: "0px" }
+		},
+        curtain: document.querySelector(".hand__curtain"),
+        cardSet: [],
+        cards: document.getElementsByClassName("card-frame"),
+        clones: document.getElementsByClassName("card-frame-clone"),
+        handleCardClick: (card, clone, event) => {
+            card.classList.add("card--hidden");
+            event.stopPropagation();
+            _uz.curtain.classList.add("curtain--visible");
+            clone.classList.add("card--visible");
+        },
+        joinClub: (d) => {
+            loadPage({ shells: [d.in ? 'welcome' : 'signup'], scroll: 0, reset: !0 });
+        },
+        loanRequest: (d) => {
+            if (_uz.user.granted && _uz.user.granted > 3 || d.out || localStorage["credit-loan"]) {
+                localStorage.dialog = JSON.stringify({
+                    message: 
+                        localStorage["credit-loan"] ? [
+                            `The next loan will be available once you’ve used your current <strong>loan</strong>. Go play first!`,
+                            `Hold on! You need to use your current <strong>loan</strong> before requesting another.`,
+                            `Play first! The next <strong>loan</strong> unlocks after you’ve used the one you already have.`,
+                            `You still have an active <strong>loan</strong>! Use it before taking another one.`,
+                            `Almost there! Consume your current <strong>loan</strong> in the game to unlock the next one.`
+                            ][Math.floor(Math.random() * 5)] :
+                        _uz.user.granted > 3 ? [
+                            `There is no loan available at the moment, you may bring your request to <strong>Play Spin It!</strong> games or to the authorized establishment(s) for another or additional <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash grants.`,
+                            `Currently, no loan is available; you can submit your request at <strong>Play Spin It!</strong> games or through authorized establishment(s) for additional <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash grants.`,
+                            `No loan is available right now, but you may take your request to <strong>Play Spin It!</strong> games or authorized establishment(s) to receive another <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash grant.`,
+                            `Loans are unavailable at the moment; please bring your request to <strong>Play Spin It!</strong> games or authorized establishment(s) to obtain an additional <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash grant.`,
+                            `We currently have no loans available. You may submit your request at <strong>Play Spin It!</strong> games or to authorized establishment(s) for another <strong>$ ${_uz.grant[_uz.user.granted || 0].amount}</strong> eℂash grant.`
+                            ][Math.floor(Math.random() * 5)] : [
+                            `You’re not a member yet. Select the first card to <strong>join</strong> the <strong>Lucky</strong> club!`,
+                            `Not a member? No worries! Pick the first card to <strong>join</strong> the exclusive <strong>Lucky</strong> club.`,
+                            `Become part of the club! Select the first card to <strong>join</strong> the <strong>Lucky</strong> club.`,
+                            `You haven’t joined yet! Choose the first card to <strong>join</strong> the prestigious <strong>Lucky</strong> club.`,
+                            `Membership unlocks benefits! Select the first card to <strong>join</strong> the <strong>Lucky</strong> club.`
+                        ][Math.floor(Math.random() * 5)],
+                    buttons: {
+                        dismiss: {
+                            text: `<span><i class="fa fa-check" style="margin-right: 12px"></i> Dismiss</span>`,
+                            shells: `['carousel', 'lobby', 'faqs']`,
+                            scroll: 1,
+                            reset: !0
+                        }
+                    },
+                    back: {
+                        shells: `['carousel', 'lobby', 'faqs']`,
+                        scroll: 1,
+                        reset: !0
+                    }
+                });
+                d.j = !0;
+            };
+            loadPage({ shells: [d.j ? 'dialog' : 'grant'], scroll: 0, reset: !0 });
+        },
+        playSpin: (d) => {
+            localStorage.url = `${"https://slotreel.web.app"}`;
+            loadPage({ shells: ['play'], scroll: 0, reset: !0 });
+        }
+    };
+    for (let i in _uz.cards)
+        if (_uz.cards[i].style)
+            _uz.cardSet.push({
+                    card: _uz.cards[i],
+                    clone: _uz.clones[i],
+                });
+    _uz.dom = { grant: document.querySelectorAll(".grant") };
+    for (let i in _uz.dom.grant)
+        if (_uz.dom.grant[i].style) {
+            _uz.dom.grant[i].innerHTML = !_uz.user.granted || _uz.user.granted < 4 ? `<span class="metallic-text gold-text grant" data-gold="$ ${_uz.grant[_uz.user.granted || 0].amount}.">$ ${_uz.grant[_uz.user.granted || 0].amount}.</span><span class="metallic-text silver-text" data-silver="00">00</span>` : "";
+            _uz.dom.grant[i].style.left = _uz.grant[_uz.user.granted || 0].left;
+        }
+    _uz.cardSet.forEach(({ card, clone }) => {
+        card.addEventListener("click", (event) => _uz.handleCardClick(card, clone, event));
+    });
+    _uz.cardSet.forEach(({ card }) => {
+        card.addEventListener("mouseover", () =>
+            card.classList.add("card--touched")
+        );
+        card.addEventListener("touchstart", () =>
+            card.classList.add("card--touched")
+        );
+        card.addEventListener("touchend", () =>
+            card.classList.remove("card--touched")
+        );
+    });
+    closeCard = (d) => {
+        _uz.cardSet.forEach(({ clone }) => {
+            clone.classList.remove("card--visible");
+        });
+        _uz.curtain.classList.remove("curtain--visible");
+        _uz.cardSet.forEach(({ card }) => {
+            card.classList.remove("card--hidden");
+        });
+    };
+</script>
+<script src="assets/js/index.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", ()=> {
+        window.parent.postMessage({
+            id: window.frameElement.id,
+            action: "pre-loader",
+            show: !1
+        }, "*");
+    });
+</script>
