@@ -408,7 +408,7 @@
     getBalance = (d) => {
         return new Function(atob(`bGV0IHQ9bG9jYWxTdG9yYWdlLnRyYW5zYWN0aW9ucz9KU09OLnBhcnNlKGxvY2FsU3RvcmFnZS50cmFuc2FjdGlvbnMpOnt9LGE9MCxiLGM9MCxuLHI7Zm9yKGxldCBpIGluIHQpdHJ5e2lmKCF0W2ldLmxvYW4pe2lmKHRbaV0ubnVtYmVyPT1hdG9iKEpTT04ucGFyc2UoYXRvYih0W2ldLmV4cGlyeSkpLmhhc2gpKWMrPXBhcnNlRmxvYXQodFtpXS5hbW91bnQpfWVsc2UgYSs9cGFyc2VGbG9hdChKU09OLnBhcnNlKGF0b2IodFtpXS5leHBpcnkpKS5hbW91bnQpO31jYXRjaChlcnIpe31iPXBhcnNlRmxvYXQobWVhc3VyZUJhbGFuY2Uoe30pKS1hO249YipjLyhjK2EpO3JldHVybntjeWNsZTpuPChjKi45KSYmYT8ibG9hZCI6ImxvYWRpbmciLGJhbGFuY2U6Yj4wP2I6YT4wJiZhPi1iPzk2OjB9`))();
     },
-    _uz = { buy: { rate: {} }, user: localStorage.user ? JSON.parse(localStorage.user) : { agreed: {}, opened: {} }, modal: document.querySelector(".modal-form"), hash: "XCVTZuTDJVudCBXSWCQLSfvSJskRCQLcvSJrleCQLVXvSJZrXCQLSvRDJtutCBXSWCbVuQLUcXVbYWbTXUVYRZafvSQJskRCSuSLUUZYcbUUfWaWbVXUXvSQJrleCfSUuQLRVTdXQXcVSdSUQVafvSQJZrXCeQdXuQLRQaeQSQUbSYWeWYTbvSQ=", activities: {} };
+    _uz = { buy: { rate: {} }, user: localStorage.user ? JSON.parse(localStorage.user) : { agreed: {}, opened: {} }, modal: document.querySelector(".modal-form"), hash: "XCVTZuTDJVudCBXSWCQLSfvSJskRCQLcvSJrleCQLVXvSJZrXCQLSvRDJtutCBXSWCbVuQLUcXVbYWbTXUVYRZafvSQJskRCSuSLUUZYcbUUfWaWbVXUXvSQJrleCfSUuQLRVTdXQXcVSdSUQVafvSQJZrXCeQdXuQLRQaeQSQUbSYWeWYTbvSQ=", activities: {}, update: { i: 0, j: 214 } };
     window.addEventListener("message", (e)=> {
         if (e.data && e.data.action) {
             if (e.data.action.match(/(balance-update)/))
@@ -450,6 +450,41 @@
                     combination: _uz.activities.combination,
                     isDown: !0
                 }, "*");
+                if (_uz.update.i > _uz.update.j) {
+                    localStorage.dialog = JSON.stringify({
+                        message: [
+                            `You’ve been spinning for a while. Consider taking a short break and checking your <i class="fa fa-money"></i> balance.`,
+                            `Enjoying the game? Take a moment to pause and review your <i class="fa fa-money"></i> balance.`,
+                            `Keep the fun going—take a quick break and check your <i class="fa fa-money"></i> balance first.`,
+                            `You’re on a roll. Before the next spin, consider checking your <i class="fa fa-money"></i> balance.`,
+                            `A quick pause can help. Take a break and have a look at your <i class="fa fa-money"></i> balance.`,
+                            `Friendly reminder: step away for a moment and review your <i class="fa fa-money"></i> balance.`,
+                            `Stay in control—take a short rest and check your <i class="fa fa-money"></i> balance before continuing.`,
+                            `Before your next spin, it might be a good time to pause and check your <i class="fa fa-money"></i> balance.`,
+                            `Having fun? Take a quick breather and make sure your <i class="fa fa-money"></i> balance is where you want it.`,
+                            `The reels can wait. Take a moment to rest and check your <i class="fa fa-money"></i> balance.`,
+                            `You’ve played a few rounds. Consider pausing and reviewing your <i class="fa fa-money"></i> balance.`,
+                            `A short break can go a long way. Check your <i class="fa fa-money"></i> balance before continuing.`,
+                            `Keep things balanced—pause for a bit and review your <i class="fa fa-money"></i> balance.`,
+                            `Take a moment to step back and check your <i class="fa fa-money"></i> balance before the next spin.`,
+                            `Enjoy responsibly—take a quick break and have a look at your <i class="fa fa-money"></i> balance.`
+                        ][Math.floor(Math.random() * 15)],
+                        buttons: {
+                            balance: {
+                                text: `<span><i class="fa fa-money" style="margin-right: 12px"></i> Balance</span>`,
+                                shells: `['settings', 'balance', 'options']`,
+                                scroll: 1,
+                                reset: !0
+                            }
+                        },
+                        back: {
+                            shells: `['settings', 'balance', 'options']`,
+                            scroll: 1,
+                            reset: !0
+                        }
+                    });
+                    loadPage({ shells: ['dialog'], scroll: 0 });
+                } else _uz.update.i++;
             }
             if (e.data.action.match(/(game-ready)/)) {
                 if (_uz.user.balance) {
