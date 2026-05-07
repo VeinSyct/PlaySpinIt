@@ -165,7 +165,7 @@ window.addEventListener("message", (e) => {
         }
         if (e.data.action.match(/(credit-accepting)/)) {
             for (let i in e.data.accepting) {
-                e.data.c = JSON.parse(_uz.x[_uz.a[20]](e.data.accepting[i]));
+                e.data.c = JSON.parse(atob(e.data.accepting[i]));
                 delete e.data.c.combine;
                 e.data.accepted.push(btoa(JSON.stringify(e.data.c)));
             }
